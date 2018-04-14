@@ -19,4 +19,4 @@ COPY Caddyfile /etc/Caddyfile
 ENV TZ=Asia/Shanghai
 
 ENTRYPOINT [ "/usr/local/bin/caddy" ]
-CMD [ "--conf", "/etc/Caddyfile", "--log", "stdout"]
+CMD [ "--conf", "/etc/Caddyfile", "--log", "stdout", "--agree"]
