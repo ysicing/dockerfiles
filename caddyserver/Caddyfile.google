@@ -1,0 +1,40 @@
+google.baidu.com {
+    gzip
+    log / /var/log/caddy/google_access.log "{remote} {when} {method} {uri} {proto} {status} {size} {>User-Agent} {latency}" {
+   	rotate_size 50  # Rotate after 50 MB
+	rotate_age  90  # Keep rotated files for 90 days
+	rotate_keep 20  # Keep at most 20 log files
+	rotate_compress # Compress rotated log files in gzip format
+    }
+    tls root@baidu.com
+    header / {
+    Strict-Transport-Security "max-age=31536000;includeSubDomains;preload"
+	-Server
+    }
+    proxy / https://www.google.co.jp {
+        header_upstream X-Real-IP {remote}
+        header_upstream User-Agent {>User-Agent}
+        header_upstream Accept-Language zh-CN
+        header_upstream Accept-Encoding identity
+    }
+    filter rule {
+        content_type text/.*
+        search_pattern www.google.co.jp
+        replacement google.baidu.com
+   }
+   filter rule {
+        content_type text/.*
+        search_pattern (www|ssl).gstatic.com
+        replacement gstatic.baidu.com
+   }
+}
+
+gstatic.baidu.com {
+    gzip
+    log /var/log/caddy/gstatic_access.log
+    tls root@baidu.com
+    proxy / https://www.gstatic.com {
+        header_upstream X-Real-IP {remote}
+        header_upstream User-Agent {>User-Agent}
+    }
+}
