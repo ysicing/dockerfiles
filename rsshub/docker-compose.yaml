@@ -1,0 +1,15 @@
+version: '2.1'
+services:
+  redis:
+    image: redis
+    container_name: redis
+    volumes:
+    -v ./redisdata:/data
+    network_mode: host
+    restart: always
+  rsshub:
+    build: .
+    image: spanda/rsshub
+    container_name: rsshub
+    network_mode: host
+    restart: always
