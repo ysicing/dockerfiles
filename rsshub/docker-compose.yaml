@@ -8,7 +8,6 @@ services:
     network_mode: host
     restart: always
   rsshub:
-    build: .
     image: spanda/rsshub
     container_name: rsshub
     network_mode: host
