@@ -3,7 +3,7 @@
 all: build push
 
 build:
-	@docker build -t spanda/rsshub .
+	@docker build --no-cache -t spanda/rsshub .
 
 push:
 	@docker push spanda/rsshub
