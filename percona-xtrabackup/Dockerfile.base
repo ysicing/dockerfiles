@@ -1,0 +1,14 @@
+FROM debian:stretch
+
+MAINTAINER ysicing
+
+ADD percona-release.list /etc/apt/sources.list.d/percona-release.list 
+
+COPY ./gpg/ /etc/apt/trusted.gpg.d/
+
+RUN set -x \
+    && apt update && apt install -y --no-install-recommends curl ca-certificates percona-xtrabackup-24 && rm -rf /var/lib/apt/lists/* 
+
+ENTRYPOINT ["/usr/bin/xtrabackup"]
+
+CMD ["--version"]
