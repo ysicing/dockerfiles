@@ -1,0 +1,10 @@
+FROM spanda/percona-xtrabackup:base
+
+RUN apt update && apt install -y --no-install-recommends cron  && rm -rf /var/lib/apt/lists/* 
+
+ADD entrypoint.sh /bin/entrypoint
+ADD backup.sh /bin/backup
+
+RUN chmod 755 /bin/entrypoint /bin/backup
+
+ENTRYPOINT ["entrypoint"]
