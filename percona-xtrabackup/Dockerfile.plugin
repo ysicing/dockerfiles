@@ -2,6 +2,8 @@ FROM spanda/percona-xtrabackup:base
 
 RUN apt update && apt install -y --no-install-recommends cron  && rm -rf /var/lib/apt/lists/* 
 
+ENV VERSION 201804191818
+
 ADD entrypoint.sh /bin/entrypoint
 ADD backup.sh /bin/backup
 
