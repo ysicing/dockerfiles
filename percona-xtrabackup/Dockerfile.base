@@ -9,6 +9,10 @@ COPY ./gpg/ /etc/apt/trusted.gpg.d/
 RUN set -x \
     && apt update && apt install -y --no-install-recommends curl ca-certificates percona-xtrabackup-24 && rm -rf /var/lib/apt/lists/* 
 
-ENTRYPOINT ["/usr/bin/xtrabackup"]
+ADD base.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["--version"]
