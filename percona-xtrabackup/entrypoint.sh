@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
+if [ "$1" == "bash" ];then
+    exec /bin/bash
+fi
+
 # installing mysql credentials if file does not exist
 mysql_config="/root/.my.cnf"
 if [ ! -f "$mysql_config" ]; then
