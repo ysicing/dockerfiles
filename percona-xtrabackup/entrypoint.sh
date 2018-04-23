@@ -14,13 +14,5 @@ if [ ! -f "$mysql_config" ]; then
     echo "port=$MYSQL_PORT" >> /root/.my.cnf
 fi
 
-# CRON
+exec go-cron -s "$SCHEDULE" -- /bin/bash -c "/bin/backup full"
 
-# 10 * * * *     /bin/bash /bin/backup full
-
-# installing crontab from env
-echo "$CRON" | crontab -
-crontab -l
-
-# run cron in foreground
-cron -f
