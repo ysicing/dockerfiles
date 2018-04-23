@@ -7,7 +7,7 @@ ADD percona-release.list /etc/apt/sources.list.d/percona-release.list
 COPY ./gpg/ /etc/apt/trusted.gpg.d/
 
 RUN set -x \
-    && apt update && apt install -y --no-install-recommends vim curl ca-certificates percona-xtrabackup-24 && rm -rf /var/lib/apt/lists/* 
+    && apt update && apt install -y --no-install-recommends vim curl tree procps ca-certificates percona-xtrabackup-24 && rm -rf /var/lib/apt/lists/* 
 
 ADD base.sh /entrypoint.sh
 
