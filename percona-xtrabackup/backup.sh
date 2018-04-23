@@ -29,12 +29,12 @@ function hotbackup(){
 function status(){
   if [ "$1" == 0 ];then
     status_info="Full Backup complete"
+    curl 'https://oapi.dingtalk.com/robot/send?access_token='$DINGTOKEN''  -H 'Content-Type: application/json' -d '{"msgtype": "text","text": {"content": "Full Backup complete"}}'
   else
     status_info="Full Backup not complete"
+    curl 'https://oapi.dingtalk.com/robot/send?access_token='$DINGTOKEN''  -H 'Content-Type: application/json' -d '{"msgtype": "text","text": {"content": "Full Backup not complete"}}'
   fi
-  curl 'https://oapi.dingtalk.com/robot/send?access_token='$DINGTOKEN'' \
-   -H 'Content-Type: application/json' \
-   -d '{"msgtype": "text","text": {"content": "'"$status_info"'"}}'
+  echo "$status_info -- $DINGTOKEN"
 }
 
 # ============= Main =============

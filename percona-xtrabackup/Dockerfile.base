@@ -2,6 +2,8 @@ FROM debian:stretch
 
 MAINTAINER ysicing
 
+ENV TZ=Asia/Shanghai
+
 ADD percona-release.list /etc/apt/sources.list.d/percona-release.list 
 
 COPY ./gpg/ /etc/apt/trusted.gpg.d/
