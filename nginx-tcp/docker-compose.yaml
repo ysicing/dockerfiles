@@ -1,0 +1,16 @@
+version: '2.1'
+services:
+  rbd-proxy:
+    image: rainbond/rbd-proxy:tcp
+    container_name: rbd-proxy
+    volumes:
+      - /tmp/nginx/nginx.conf:/usr/local/nginx/conf/nginx.conf
+      - /tmp/nginx/sites:/usr/local/nginx/conf/sites
+      - /tmp/nginx/ssl:/usr/local/nginx/conf/ssl
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+    network_mode: "host"
+    restart: always
