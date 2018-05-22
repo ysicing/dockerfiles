@@ -11,6 +11,10 @@ ADD nginx.tgz /usr/local/
 
 COPY nginx.conf /usr/local/nginx/conf/nginx.conf
 
+WORKDIR /usr/local/nginx/
+
+ENV PATH=$PATH:/usr/local/nginx/sbin
+
 EXPOSE 80 443
 
 CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
