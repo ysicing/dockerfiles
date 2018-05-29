@@ -1,0 +1,3 @@
+[submodule "buildpack-nginx"]
+	path = buildpack-nginx
+	url = git@github.com:ysicing/buildpack-nginx.git
