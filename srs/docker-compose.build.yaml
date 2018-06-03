@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   srs:
-    image: spanda/srs
+    build: .
     container_name: srs
     volumes:
     - ./log:/opt/objs/tmp
