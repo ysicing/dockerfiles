@@ -1,0 +1,9 @@
+version: '2.1'
+services:
+  srs:
+    build: .
+    container_name: srs
+    volumes:
+    - ./log:/opt/objs/tmp
+    network_mode: host
+    restart: always
