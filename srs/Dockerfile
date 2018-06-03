@@ -1,18 +1,20 @@
 FROM debian:stretch-slim AS builder
 
-RUN \
+RUN  \
     apt-get update && \
     apt-get install -y  --no-install-recommends libpcre3 zlib1g libpcre3-dev zlib1g-dev build-essential curl ca-certificates && \
     apt-get install -y  --no-install-recommends git gcc make g++ gdb unzip sudo python && \
     git clone https://github.com/ossrs/srs /tmp/build/ && \
     cd /tmp/build/trunk && \
-    ./configure --disable-all --with-hls --with-ssl --with-http-server && make && \
-    cp -a objs/srs /usr/local/bin/ && \
-    rm -rf /var/lib/apt/lists/*
+    ./configure --prefix=/srs --disable-all --with-hls --with-ssl --with-http-server && \
+    make && \
+    make install && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /tmp/*
 
 FROM spanda/ptcore
 
-COPY --from=builder /usr/local/bin/srs /opt/objs/
+COPY --from=builder /srs/ /opt/
 
 WORKDIR /opt/objs/
 
