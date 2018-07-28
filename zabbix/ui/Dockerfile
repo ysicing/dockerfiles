@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM spanda/ptcore
 LABEL maintainer="Alexey Pustovalov <alexey.pustovalov@zabbix.com>"
 
 ARG BUILD_DATE
@@ -40,7 +40,7 @@ RUN apt-get ${APT_FLAGS_COMMON} update && \
             wget && \
     DISTRIB_CODENAME=$(/bin/bash -c 'source /etc/lsb-release && echo $DISTRIB_CODENAME') && \
     wget -q https://nginx.org/keys/nginx_signing.key -O- | apt-key add - && \
-    echo "deb http://nginx.org/packages/ubuntu/ $DISTRIB_CODENAME nginx" >> /etc/apt/sources.list.d/nginx.list && \
+    echo "deb http://nginx.org/packages/debian/ $DISTRIB_CODENAME nginx" >> /etc/apt/sources.list.d/nginx.list && \
     apt-get ${APT_FLAGS_COMMON} update && \
     apt-get ${APT_FLAGS_PERSISTENT} install \
             curl \
@@ -118,7 +118,6 @@ VOLUME ["/etc/ssl/nginx"]
 
 COPY ["conf/etc/supervisor/", "/etc/supervisor/"]
 COPY ["conf/etc/zabbix/nginx.conf", "/etc/zabbix/"]
-COPY ["conf/etc/zabbix/nginx_ssl.conf", "/etc/zabbix/"]
 COPY ["conf/etc/zabbix/web/zabbix.conf.php", "/etc/zabbix/web/"]
 COPY ["conf/etc/nginx/nginx.conf", "/etc/nginx/"]
 COPY ["conf/etc/php/7.2/fpm/conf.d/99-zabbix.ini", "/etc/php/7.2/fpm/conf.d/"]
