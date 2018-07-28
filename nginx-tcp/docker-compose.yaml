@@ -1,8 +1,8 @@
 version: '2.1'
 services:
-  rbd-proxy:
-    image: rainbond/rbd-proxy:tcp
-    container_name: rbd-proxy
+  nginx-tcp:
+    image: spanda/nginx:tcp
+    container_name: nginx-tcp
     volumes:
       - /tmp/nginx/sites_stream:/usr/local/nginx/conf/sites_stream
       - /tmp/nginx/sites_http:/usr/local/nginx/conf/sites_http
