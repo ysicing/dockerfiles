@@ -38,9 +38,8 @@ RUN apt-get ${APT_FLAGS_COMMON} update && \
     apt-get ${APT_FLAGS_COMMON} update && \
     apt-get ${APT_FLAGS_COMMON} install \
             wget && \
-    DISTRIB_CODENAME=$(/bin/bash -c 'source /etc/lsb-release && echo $DISTRIB_CODENAME') && \
     wget -q https://nginx.org/keys/nginx_signing.key -O- | apt-key add - && \
-    echo "deb http://nginx.org/packages/debian/ $DISTRIB_CODENAME nginx" >> /etc/apt/sources.list.d/nginx.list && \
+        echo "deb http://nginx.org/packages/debian/ stretch nginx" >> /etc/apt/sources.list.d/nginx.list && \
     apt-get ${APT_FLAGS_COMMON} update && \
     apt-get ${APT_FLAGS_PERSISTENT} install \
             curl \
