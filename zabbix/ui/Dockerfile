@@ -38,8 +38,10 @@ RUN apt-get ${APT_FLAGS_COMMON} update && \
     apt-get ${APT_FLAGS_COMMON} update && \
     apt-get ${APT_FLAGS_COMMON} install \
             wget && \
+    wget -O /etc/apt/trusted.gpg.d/php.gpg https://mirror.xtom.com.hk/sury/php/apt.gpg && \
     wget -q https://nginx.org/keys/nginx_signing.key -O- | apt-key add - && \
         echo "deb http://nginx.org/packages/debian/ stretch nginx" >> /etc/apt/sources.list.d/nginx.list && \
+        echo "deb https://mirror.xtom.com.hk/sury/php/ $(lsb_release -sc) main" |  tee /etc/apt/sources.list.d/php.list && \
     apt-get ${APT_FLAGS_COMMON} update && \
     apt-get ${APT_FLAGS_PERSISTENT} install \
             curl \
