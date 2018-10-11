@@ -1,0 +1,10 @@
+version: '2.1'
+services:
+  ss:
+    image: spanda/ss
+    container_name: ss
+    #command: -c /ss/gfw.json -d start
+    volumes:
+    - /root/ss/gfw.json:/ss/gfw.json
+    network_mode: host
+    restart: always
