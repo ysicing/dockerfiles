@@ -1,6 +1,8 @@
 FROM python:slim-stretch
 
-MAINTAINER ops.ysicing@gmail.com
+MAINTAINER root@ysicing.net
+
+ENV TZ=Asia/Shanghai
 
 ENV URL=https://download.libsodium.org/libsodium/releases/LATEST.tar.gz
 
