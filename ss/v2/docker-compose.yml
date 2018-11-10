@@ -1,0 +1,10 @@
+version: '2.1'
+services:
+  ss:
+    image: spanda/ss:v2
+    container_name: ss
+    environment:
+      - PORT=3389
+      - PASS=12345678
+    network_mode: host
+    restart: always

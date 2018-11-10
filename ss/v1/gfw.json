@@ -1,10 +1,10 @@
 {
-    "server": "150.95.152.98",
+    "server": "0.0.0.0",
     "server_port": "110",
     "manager-address": "127.0.0.1:6666",
     "local_address": "127.0.0.1",
     "local_port": 1080,
-    "password": "56780000",
+    "password": "00000000",
     "timeout": 300,
     "workers": 4,
     "method": "salsa20",
