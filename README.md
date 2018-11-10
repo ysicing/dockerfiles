@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/ysicing/dockerfiles.svg?branch=master)](https://travis-ci.org/ysicing/dockerfiles)
 # 镜像列表
 
 - spanda/caddy
