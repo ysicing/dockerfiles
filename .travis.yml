@@ -9,13 +9,13 @@ git:
 
 script:
 - docker build -t spanda/caddy caddyserver
-- docker build -t spanda/nginx:rtmp nginx-rtmp
+#- docker build -t spanda/nginx:rtmp nginx-rtmp
 - docker build -t spanda/srs srs 
 - docker build -t spanda/ss:v2 ss/v2
 - docker build -t spanda/ptcore
 - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 - docker push spanda/caddy
-- docker push spanda/nginx:rtmp
+#- docker push spanda/nginx:rtmp
 - docker push spanda/srs
 - docker push spanda/ss:v2 
 - docker push spanda/ptcore
