@@ -1,9 +1,11 @@
 #!/bin/bash
 
+[ $DEBUG ] && set -xe
+
 [ -z "$PORT" ] && PORT="110"
 [ -z "$PASS" ] && PORT="12345678"
 
-cat > /ss/gfw <<EOF
+cat > /ss/gfw.json <<EOF
 {
     "server": "0.0.0.0",
     "server_port": "${PORT}",
@@ -16,7 +18,6 @@ cat > /ss/gfw <<EOF
     "method": "salsa20",
     "fast_open": false
 }
-
 EOF
 
 if [[ "$1" == "bash" ]];then
