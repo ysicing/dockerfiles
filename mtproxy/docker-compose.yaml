@@ -1,0 +1,14 @@
+version: '2.1'
+services:
+  mtproxy:
+    image: spanda/mtproxy
+    container_name: spanda/mtproxy
+    environment:
+      - port=3306
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
+    network_mode: "host"
+    restart: always
