@@ -7,7 +7,7 @@ ENV TZ=Asia/Shanghai
 RUN apt-get update && apt-get install -yqq --no-install-recommends git ssh hugo  \
     && rm -rf /var/lib/apt/lists/* 
 
-RUN curl https://getcaddy.com | bash -s personal dns,hook.service,http.authz,http.cache,http.cgi,http.cors,http.datadog,http.expires,http.filebrowser,http.filter,http.forwardproxy,http.geoip,http.git,http.gopkg,http.grpc,http.ipfilter,http.jwt,http.locale,http.login,http.minify,http.nobots,http.prometheus,http.proxyprotocol,http.ratelimit,http.realip,http.reauth,http.restic,http.s3browser,http.upload,http.webdav,net,tls.dns.cloudflare,tls.dns.cloudxns,tls.dns.googlecloud,tls.dns.vultr
+RUN curl https://getcaddy.com | bash -s personal dyndns,hook.service,http.authz,http.cache,http.cgi,http.cors,http.datadog,http.expires,http.filemanager,http.filter,http.forwardproxy,http.git,http.hugo,http.ipfilter,http.locale,http.login,http.mailout,http.minify,http.nobots,http.prometheus,http.proxyprotocol,http.ratelimit,http.realip,http.jekyll,http.geoip,http.reauth,http.restic,http.upload,http.webdav,net 
 
 VOLUME /root/.caddy
 
