@@ -9,7 +9,7 @@ else
     [ -z "$secret" ] && secret=${default_secret}
     [ -z "$worker" ] && worker=4
     [ -z "$port" ] && port=443
-    IP="$(curl -s -4 "https://ip.sb")"
+    IP="$(curl -s -4 ip.sb)"
     INTERNAL_IP="$(ip -4 route get 8.8.8.8 | grep '^8\.8\.8\.8\s' | grep -Po 'src\s+\d+\.\d+\.\d+\.\d+' | awk '{print $2}')"
 
     curl -sk https://core.telegram.org/getProxySecret -o /proxy-secret
