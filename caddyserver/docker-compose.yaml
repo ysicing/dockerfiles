@@ -1,0 +1,12 @@
+version: '2.1'
+services:
+  caddy:
+    image: spanda/caddy
+    container_name: caddy
+    volumes:
+    - ./ssl:/root/.caddy
+    - /var/log/caddy:/var/log/caddy
+    - ./Caddyfile:/etc/Caddyfile
+    - /root/.ssh:/root/.ssh
+    network_mode: host
+    restart: always
