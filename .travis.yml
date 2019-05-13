@@ -13,6 +13,7 @@ script:
 #- docker build -t spanda/srs srs 
 - docker build -t spanda/ss:v2 ss/v2
 - docker build -t spanda/ptcore stretch-core
+- docker build -t ysicing/debian buster-core
 - docker build -t spanda/mtproxy mtproxy
 - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 #- docker push spanda/caddy
@@ -21,3 +22,4 @@ script:
 - docker push spanda/ss:v2 
 - docker push spanda/ptcore
 - docker push spanda/mtproxy
+- docker push ysicing/debian
