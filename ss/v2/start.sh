@@ -16,7 +16,7 @@ cat > /ss/gfw.json <<EOF
     "password": "${PASS}",
     "timeout": 300,
     "workers": 4,
-    "method": "salsa20",
+    "method": "${METHOD}",
     "fast_open": false
 }
 EOF
