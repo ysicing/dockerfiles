@@ -4,6 +4,7 @@
 
 [ -z "$PORT" ] && PORT="110"
 [ -z "$PASS" ] && PORT="12345678"
+[ -z "$METHOD" ] && METHOD="salsa20"
 
 cat > /ss/gfw.json <<EOF
 {
