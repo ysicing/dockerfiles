@@ -13,8 +13,9 @@ script:
 #- docker build -t spanda/srs srs 
 - docker build -t spanda/ss:v2 ss/v2
 - docker build -t spanda/ptcore stretch-core
-- docker build -t ysicing/debian buster-core
+- docker build -t spanda/debian buster-core
 - docker build -t spanda/mtproxy mtproxy
+- docker build -t ysicing/apt-cacher-ng apt-cacher-ng
 - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 #- docker push spanda/caddy
 #- docker push spanda/nginx:rtmp
@@ -22,4 +23,5 @@ script:
 - docker push spanda/ss:v2 
 - docker push spanda/ptcore
 - docker push spanda/mtproxy
-- docker push ysicing/debian
+- docker push spanda/debian
+- docker push spanda/apt-cacher-ng
