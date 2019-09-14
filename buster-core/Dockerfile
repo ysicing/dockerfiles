@@ -1,6 +1,6 @@
 FROM debian:buster-slim
 
-LABEL maintainer="ysicing"
+LABEL maintainer="ysicing <i@ysicing.me>"
 
 ENV TZ=Asia/Shanghai
 
