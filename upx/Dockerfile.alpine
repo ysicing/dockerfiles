@@ -1,7 +1,0 @@
-FROM golang:1.10.3-alpine3.7
-
-LABEL MAINTAINER="ysicing"
-
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
-    && apk add --no-cache net-tools libpcap-dev g++ gcc libc-dev make pkgconf libgcc libstdc++ curl \
-    && curl -s -k -L https://pkg.spanda.io/tgz/upx/upx-alpine.tar.gz | tar xzm -C /

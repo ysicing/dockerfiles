@@ -6,22 +6,6 @@ services:
 git:
   depth: 1
 
-
 script:
-#- docker build -t spanda/caddy caddyserver
-#- docker build -t spanda/nginx:rtmp nginx-rtmp
-#- docker build -t spanda/srs srs 
-- docker build -t spanda/ss:v2 ss/v2
-- docker build -t spanda/ptcore stretch-core
-- docker build -t spanda/debian buster-core
-- docker build -t spanda/mtproxy mtproxy
-- docker build -t ysicing/apt-cacher-ng apt-cacher-ng
 - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-#- docker push spanda/caddy
-#- docker push spanda/nginx:rtmp
-#- docker push spanda/srs
-- docker push spanda/ss:v2 
-- docker push spanda/ptcore
-- docker push spanda/mtproxy
-- docker push spanda/debian
-- docker push spanda/apt-cacher-ng
+- ./build.sh
