@@ -93,10 +93,11 @@ RUN chown -R www-data:root /var/www/html && \
     php /bin/composer.phar global require "hirak/prestissimo:^0.3" && \
     php /bin/composer.phar install -o && \
     rm -rf bootstrap/cache/* && \
-    grep "asset(mix" * -R | awk -F: '{print $1}' | xargs -I {} sed -i "s# asset(mix# secure_asset(mix#g" {} && \
-    grep " asset('/img" * -R | awk -F: '{print $1}' | xargs -I {} sed -i "s# asset('/img# secure_asset('/img#g" {} && \
-    sed -i "41 aURL::forceScheme('https');" /var/www/html/app/Foundation/Providers/AppServiceProvider.php && \
-    sed -i 's#URL::forceScheme#\\URL::forceScheme#g' /var/www/html/app/Foundation/Providers/AppServiceProvider.php && \
+#    grep "asset(mix" * -R | awk -F: '{print $1}' | xargs -I {} sed -i "s# asset(mix# secure_asset(mix#g" {} && \
+#    grep " asset('/img" * -R | awk -F: '{print $1}' | xargs -I {} sed -i "s# asset('/img# secure_asset('/img#g" {} && \
+#    sed -i "41 aURL::forceScheme('https');" /var/www/html/app/Foundation/Providers/AppServiceProvider.php && \
+#    sed -i 's#URL::forceScheme#\\URL::forceScheme#g' /var/www/html/app/Foundation/Providers/AppServiceProvider.php && \
+    \
     sed -i '156d' /var/www/html/app/Models/Schedule.php 
      
 
