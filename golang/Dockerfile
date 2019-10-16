@@ -4,6 +4,10 @@ LABEL maintainer="ysicing <i@ysicing.me>"
 
 ENV TZ Asia/Shanghai
 
+ENV GOPROXY https://goproxy.cn
+
+ENV GO111MODULE on
+
 COPY sources.list /etc/apt/sources.list
 
 RUN set -x \
