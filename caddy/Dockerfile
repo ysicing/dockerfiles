@@ -104,13 +104,13 @@ ENV TZ=Asia/Shanghai
 
 EXPOSE 80 443
 
-VOLUME /root/.caddy /srv /conf
+VOLUME /root/.caddy /srv /conf /var/log/caddy
 WORKDIR /srv
 
 COPY Caddyfile /conf/Caddyfile
 COPY index.php /srv/index.php
 
-COPY 404.html /conf/404.html
+COPY 404.html /etc/404.html
 
 # Install Process Wrapper
 COPY --from=builder /go/bin/parent /bin/parent

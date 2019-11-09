@@ -8,9 +8,9 @@ ENV GOPROXY https://goproxy.cn
 
 ENV GO111MODULE on
 
-COPY sources.list /etc/apt/sources.list
-
 RUN set -x \
     && apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y apt-transport-https ca-certificates procps curl wget net-tools \
     && rm -rf /var/lib/apt/lists/*
+
+COPY sources.list /etc/apt/sources.list
