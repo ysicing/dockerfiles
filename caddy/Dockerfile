@@ -23,7 +23,7 @@ ARG PUID="1000"
 ARG PGID="1000"
 
 # Let's Encrypt Agreement
-ENV ACME_AGREE="false"
+ENV ACME_AGREE="true"
 
 # Telemetry Stats
 ENV ENABLE_TELEMETRY="$enable_telemetry"
