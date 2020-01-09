@@ -27,6 +27,14 @@ if [ "$ENABLE" = "true" ];then
         # null
         exec go-cron -s "${SCHEDULE:-@every 360s}" -- /bin/bash -c "echo '' "
     fi
+elif [ "$ENABLE" = "once" ]; then
+    if [ "$BACKUPTYPE" = "INCENABLE" ];then
+        # incremental
+        exec /bin/bash "/bin/backup incremental"
+    else
+        # full
+        exec /bin/bash "/bin/backup full"
+     fi
 else
     # 未启用备份
     exec go-cron -s "${SCHEDULE:-@every 360s}" -- /bin/bash -c "echo '' "
