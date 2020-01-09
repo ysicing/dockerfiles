@@ -5,7 +5,7 @@ bakdate=`date +'%F'`
 bakhour=`date +'%H'`
 #oneHourAgo=`date -d '1 hours ago' +'%F_%H'`
 BakBin="/usr/bin/xtrabackup \
---datadir=/data/data \
+--datadir=${dbdata:-/var/lib/mysql} \
 --backup \
 --use-memory=${memory:-1G} \
 --throttle=${throttle:-10}"
