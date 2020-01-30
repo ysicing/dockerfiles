@@ -19,4 +19,3 @@ RUN  sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositorie
     && date \
     && apk del --no-cache tzdata \
     && rm -rf /var/cache/apk/* 
-
