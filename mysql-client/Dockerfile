@@ -1,4 +1,4 @@
-FROM ysicing/gobuild as tools
+FROM ysicing/gobuild-alpine as tools
 
 RUN apk update
 
