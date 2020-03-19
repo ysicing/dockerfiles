@@ -1,4 +1,4 @@
-FROM python:slim-stretch
+FROM python:slim-buster
 
 MAINTAINER root@ysicing.net
 
