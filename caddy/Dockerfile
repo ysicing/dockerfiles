@@ -12,7 +12,8 @@ RUN VERSION=${version} PLUGINS=${plugins} ENABLE_TELEMETRY=${enable_telemetry} /
 #
 # Final Stage
 #
-FROM alpine:3.10
+FROM ysicing/alpine
+
 LABEL maintainer "Abiola Ibrahim <abiola89@gmail.com>"
 
 ARG version="1.0.3"
