@@ -1,16 +1,16 @@
-FROM golang:buster
+FROM ysicing/gobuild as gotools
+
+ENV GOPROXY=https://goproxy.cn
+
+RUN apt update; apt install -y git && \
+    go get -u github.com/google/gops
+
+FROM ysicing/debian
 
 LABEL maintainer="ysicing <i@ysicing.me>"
 
 ENV TZ Asia/Shanghai
 
-ENV GOPROXY https://goproxy.cn
+COPY --from=gotools /go/bin/gops /usr/local/bin/gops
 
-ENV GO111MODULE on
-
-COPY sources.list /etc/apt/sources.list
-
-RUN set -x \
-    && apt-get update \
-    && apt-get install --no-install-recommends --no-install-suggests -y apt-transport-https ca-certificates procps curl wget net-tools \
-    && rm -rf /var/lib/apt/lists/*
+RUN chmod +x /usr/local/bin/gops
