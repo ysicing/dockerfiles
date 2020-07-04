@@ -13,5 +13,4 @@ COPY sources.list /etc/apt/sources.list
 RUN set -x \
     && apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y git \
-    && rm -rf /var/lib/apt/lists/* \
-    && go install github.com/google/gops
+    && rm -rf /var/lib/apt/lists/*

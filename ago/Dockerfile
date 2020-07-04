@@ -18,5 +18,4 @@ RUN  sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositorie
     && echo ${TZ} > /etc/timezone \
     && date \
     && apk del --no-cache tzdata \
-    && rm -rf /var/cache/apk/*  \
-    && go install github.com/google/gops
+    && rm -rf /var/cache/apk/*
