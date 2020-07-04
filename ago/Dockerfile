@@ -11,11 +11,12 @@ ARG TZ="Asia/Shanghai"
 ENV TZ ${TZ}
 
 RUN  sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
-    && apk upgrade \
+    && apk update \
     && apk add --no-cache bash tzdata curl make git \
     && sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd \
     && ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime \
     && echo ${TZ} > /etc/timezone \
     && date \
     && apk del --no-cache tzdata \
-    && rm -rf /var/cache/apk/* 
+    && rm -rf /var/cache/apk/*  \
+    && go install github.com/google/gops

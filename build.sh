@@ -6,6 +6,6 @@ images=$(ls -al | grep "drwxr"  | grep -v "\." | awk '{print $NF}' | grep -v "ca
 for image in ${images[@]}
 do
 
-    docker build -t ysicing/${image} ${image}
+    docker build --no-cache -t ysicing/${image} ${image}
     docker push ysicing/${image}
 done

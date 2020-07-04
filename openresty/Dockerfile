@@ -1,4 +1,4 @@
-FROM openresty/openresty:1.15.8.3-1-buster
+FROM openresty/openresty:1.15.8.3-2-buster
 
 LABEL maintainer="ysicing <i@ysicing.me>"
 
