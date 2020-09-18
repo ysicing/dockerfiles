@@ -15,4 +15,5 @@ do
         docker push registry.cn-beijing.aliyuncs.com/k7scn/${image}
     )
     docker push ysicing/${image}
+    curl -s https://cr.hk2.godu.dev/pull\?name="ysicing/${image}"
 done
