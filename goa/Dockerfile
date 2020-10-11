@@ -19,3 +19,7 @@ RUN  sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositorie
     && date \
     && apk del --no-cache tzdata \
     && rm -rf /var/cache/apk/*
+
+COPY upx /usr/local/bin/upx
+
+RUN chmod +x /usr/local/bin/upx

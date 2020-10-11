@@ -8,6 +8,8 @@ images=$(ls -al | grep "drwxr"  | grep -v "\." | awk '{print $NF}' | grep -v "ca
 for image in ${images[@]}
 do
     echo "start build ${image}"
+    cp -a ../upx ${image}/upx
+    chmod +x ${image}/upx
     cat ${image}/Dockerfile | grep FROM | awk '{print $2}' | xargs -I {} docker pull {}
     docker build --no-cache -t ysicing/${image} ${image}
     [ ! -z $mirrors ] && (
