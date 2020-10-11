@@ -15,6 +15,6 @@ RUN set -x \
     && apt-get install --no-install-recommends --no-install-suggests -y git \
     && rm -rf /var/lib/apt/lists/*
 
-COPY upx /usr/local/bin/upx
+COPY upx /usr/bin/upx
 
-RUN chmod +x /usr/local/bin/upx
+RUN chmod +x /usr/bin/upx
