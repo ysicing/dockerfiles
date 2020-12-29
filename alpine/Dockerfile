@@ -1,10 +1,12 @@
-FROM alpine:3.12
+FROM alpine:edge
 
 LABEL maintainer="ysicing <i@ysicing.me>"
 
 ARG TZ="Asia/Shanghai"
 
 ENV TZ ${TZ}
+
+COPY repositories /etc/apk/repositories
 
 RUN apk update \
     && apk add --no-cache bash tzdata curl busybox-extras drill \
@@ -13,7 +15,6 @@ RUN apk update \
     && echo ${TZ} > /etc/timezone \
     && date \
     && apk del --no-cache tzdata \
-    && rm -rf /var/cache/apk/* \
-    && sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+    && rm -rf /var/cache/apk/* 
 
 CMD ["/bin/bash"]

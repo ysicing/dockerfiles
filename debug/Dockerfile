@@ -37,7 +37,6 @@ RUN set -ex \
     nmap \
     nmap-nping \
     openssl \
-    py-crypto \
     scapy \
     socat \
     strace \
