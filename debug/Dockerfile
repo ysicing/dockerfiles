@@ -45,8 +45,8 @@ RUN set -ex \
     tshark \
     util-linux \
     vim \
-    websocat
-
+    websocat \
+    git
 
 # apparmor issue #14140
 RUN mv /usr/sbin/tcpdump /usr/bin/tcpdump
