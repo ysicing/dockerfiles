@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -xe
+
+name=$1
+version=$2
+
+pushd /builder/
+
+cat > ${name}/DEBIAN/control <<EOF
+Package:${name}
+Version:${version}
+Architecture:amd64
+Maintainer:ysicing
+Description:${name} ${version}
+
+EOF
+
+[ -f "${name}/usr/local/bin/${name}" ] || exit 1
+
+dpkg-deb -b ${name} ${name}.${version}_amd64.deb
+popd
