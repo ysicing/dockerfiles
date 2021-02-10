@@ -17,6 +17,6 @@ do
         docker push registry.cn-beijing.aliyuncs.com/k7scn/${image}
     )
     docker push ysicing/${image}
-    curl -s https://cr.hk1.godu.dev/pull\?name="ysicing/${image}"
+    curl -s https://cr.hk1.godu.dev/pull\?image="ysicing/${image}"
     rm -rf ${image}/upx
 done
