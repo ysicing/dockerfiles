@@ -6,7 +6,7 @@ ARG TZ="Asia/Shanghai"
 
 ENV TZ ${TZ}
 
-COPY repositories /etc/apk/repositories
+# COPY repositories /etc/apk/repositories
 
 RUN apk update \
     && apk add --no-cache bash tzdata curl busybox-extras drill \

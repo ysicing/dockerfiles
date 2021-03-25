@@ -5,14 +5,12 @@ package main
 
 import (
 	"fmt"
+	"time"
+
 	"github.com/gin-gonic/gin"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"github.com/ysicing/ext/e"
-	"github.com/ysicing/ext/ginmid"
-	"github.com/ysicing/ext/logger"
-	"net/http"
-	"time"
+	"github.com/ysicing/ext/exgin"
 )
 
 var (
@@ -22,35 +20,30 @@ var (
 	})
 )
 
-func init()  {
-	logcfg := logger.Config{Simple: true, ConsoleOnly: true}
-	logger.InitLogger(&logcfg)
+func init() {
 	prometheus.MustRegister(FoundDomainCount)
 }
 
 func main() {
-	gin.SetMode(gin.DebugMode)
-	gin.DisableConsoleColor()
-	r := gin.New()
-	r.Use(ginmid.RequestID(), ginmid.Log())
-
+	r := exgin.ExGin(false)
 	// Example ping request.
 	r.GET("/healthz", func(c *gin.Context) {
-		c.String(http.StatusOK, "pong "+fmt.Sprint(time.Now().Unix()))
+		exgin.GinsData(c, "pong "+fmt.Sprint(time.Now().Unix()), nil)
+	})
+	r.GET("/health", func(c *gin.Context) {
+		exgin.GinsData(c, "pong "+fmt.Sprint(time.Now().Unix()), nil)
 	})
 
 	// Example / request.
 	r.GET("/", func(c *gin.Context) {
-		// c.String(http.StatusOK, "default backend. \n\nid: "+mid.GetRequestID(c))
 		FoundDomainCount.Inc()
-		c.JSON(404, e.Error(10404, map[string]interface{}{
+		exgin.GinsData(c, map[string]interface{}{
 			"message": "default backend",
-			"id": ginmid.GetRequestID(c),
-			"method": c.Request.Method,
-			"url": c.Request.Host,
-			"client": c.ClientIP(),
-			"ua": c.Request.UserAgent(),
-		}))
+			"method":  c.Request.Method,
+			"url":     c.Request.Host,
+			"client":  c.ClientIP(),
+			"ua":      c.Request.UserAgent(),
+		}, nil)
 	})
 
 	// Example /metrics

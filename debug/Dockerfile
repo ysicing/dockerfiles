@@ -48,9 +48,6 @@ RUN set -ex \
     websocat \
     git
 
-# apparmor issue #14140
-RUN mv /usr/sbin/tcpdump /usr/bin/tcpdump
-
 # Settings
 ADD motd /etc/motd
 ADD profile  /etc/profile
