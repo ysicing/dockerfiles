@@ -1,4 +1,4 @@
-FROM golang:1.15-buster
+FROM golang:1.16-buster
 
 LABEL maintainer="ysicing <i@ysicing.me>"
 
@@ -14,7 +14,3 @@ RUN set -x \
     && apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y git build-essential \
     && rm -rf /var/lib/apt/lists/*
-
-COPY upx /usr/bin/upx
-
-RUN chmod +x /usr/bin/upx

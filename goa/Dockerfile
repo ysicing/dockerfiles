@@ -1,4 +1,4 @@
-FROM golang:1.15-alpine
+FROM golang:1.16-alpine
 
 LABEL maintainer="ysicing <i@ysicing.me>"
 
@@ -19,7 +19,3 @@ RUN  sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositorie
     && date \
     && apk del --no-cache tzdata \
     && rm -rf /var/cache/apk/*
-
-COPY upx /usr/bin/upx
-
-RUN chmod +x /usr/bin/upx
