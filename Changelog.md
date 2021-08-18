@@ -5,6 +5,7 @@
 - god更新到1.17-bullseye
 - goa更新到1.17
 - python更新到3.9-slim-bullseye
+- 修复debian debian-security源问题
 
 ## 20210721 更新
 
