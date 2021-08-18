@@ -7,22 +7,28 @@
 # alpine
 registry.cn-beijing.aliyuncs.com/k7scn/alpine:latest
 ysicing/alpine
+ghcr.io/ysicing/alpine
+ghcr-proxy.hk1.godu.dev/ysicing/alpine
 
 # debian
 registry.cn-beijing.aliyuncs.com/k7scn/debian:latest
 ysicing/debian
-
-# defaultbackend nginx default backend
-registry.cn-beijing.aliyuncs.com/k7scn/defaultbackend:latest
-ysicing/defaultbackend
+ghcr.io/ysicing/debian
+ghcr-proxy.hk1.godu.dev/ysicing/debian
 
 # go alpine
 registry.cn-beijing.aliyuncs.com/k7scn/goa:latest
 ysicing/goa
+ghcr.io/ysicing/goa
+ghcr-proxy.hk1.godu.dev/ysicing/goa
+
 
 # go debian
 registry.cn-beijing.aliyuncs.com/k7scn/god:latest
 ysicing/god
+ghcr.io/ysicing/god
+ghcr-proxy.hk1.godu.dev/ysicing/god
+
 ```
 
 

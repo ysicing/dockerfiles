@@ -1,3 +1,11 @@
+## 20210818 更新
+
+- 移除defaultbackend
+- debian更新到bullseye
+- god更新到1.17-bullseye
+- goa更新到1.17
+- python更新到3.9-slim-bullseye
+
 ## 20210721 更新
 
 - 移除upx
