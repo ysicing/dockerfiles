@@ -18,3 +18,5 @@ do
     curl -s https://cr.hk1.godu.dev/pull\?image="ysicing/${image}"
     # rm -rf ${image}/upx
 done
+
+docker run --rm --name kubectl ghcr.io/ysicing/kubectl:latest
