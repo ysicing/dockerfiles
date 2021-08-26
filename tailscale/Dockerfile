@@ -1,6 +1,6 @@
 FROM ysicing/alpine
 
-ARG TARGETARCH
+ARG TARGETARCH=amd64
 ARG VERSION=1.14.0
 
 RUN \

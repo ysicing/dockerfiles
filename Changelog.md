@@ -1,7 +1,7 @@
 ## 20210826 更新
 
 - 新增tailscale镜像
-- 重命名kubectl为k
+- 移除kubectl,避免与tools里kubectl冲突
 
 ## 20210825 更新
 
