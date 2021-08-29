@@ -14,4 +14,4 @@ RUN xcaddy build \
 
 FROM ghcr.io/ysicing/debian
 
-COPY --from=build /go/src/caddy /usr/local/bin/caddy
+COPY --from=build /go/caddy /usr/local/bin/caddy
