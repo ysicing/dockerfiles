@@ -1,0 +1,33 @@
+www.example.com {
+    # 重定向到 example.com
+    # 最后的 "code" 支持三种参数
+    # temporary => 302
+    # permanent => 301
+    # html => HTML document redirect
+    redir http://example.com{uri} permanent
+
+    # 日志
+    import LOG "/var/log/www.example.com.log"
+
+    # TLS、HSTS、ACME 等通用配置
+    import COMMON_CONFIG
+}
+
+example.com {
+    # 路由
+
+    metrics /metrics
+
+    root * /root/www
+    file_server
+
+    # route /* {
+    #     reverse_proxy example.com:80
+    # }
+
+    # 日志
+    import LOG "/var/log/example.com.log"
+
+    # TLS、HSTS、ACME 等通用配置
+    import COMMON_CONFIG
+}

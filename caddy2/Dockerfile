@@ -10,8 +10,22 @@ RUN xcaddy build \
     --with github.com/porech/caddy-maxmind-geolocation \
     --with github.com/sjtug/caddy2-filter \
     --with github.com/WingLim/caddy-webhook \
-    --with github.com/mholt/caddy-ratelimit
+    --with github.com/mholt/caddy-ratelimit \
+    --with github.com/greenpau/caddy-auth-jwt \
+    --with github.com/greenpau/caddy-auth-portal \
+    --with github.com/greenpau/caddy-trace \
+    --with github.com/hairyhenderson/caddy-teapot-module \
+    --with github.com/caddyserver/format-encoder \
+    --with github.com/mholt/caddy-webdav
+
+RUN /go/caddy list-modules
 
 FROM ghcr.io/ysicing/debian
 
 COPY --from=build /go/caddy /usr/local/bin/caddy
+
+COPY caddy /etc/caddy
+
+COPY www /root/www
+
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
