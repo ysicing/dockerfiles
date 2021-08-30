@@ -1,14 +1,15 @@
 (LOG) {
     log {
         # 日志格式参考 https://github.com/caddyserver/format-encoder 插件文档
-        format formatted "[{ts}] {request>remote_addr} {request>proto} {request>method} <- {status} -> {request>host} {request>uri} {request>headers>User-Agent>[0]}"  {
+        format formatted "[{ts}] {request>remote_addr} {request>headers>X-Forwarded-For} {request>method} <- {status} -> {request>host} {request>uri} {request>headers>User-Agent>[0]}"  {
             time_format "iso8601"
         }
         output file "{args.0}" {
-            roll_size 100mb
+            roll_size 50mb
             roll_keep 3
             roll_keep_for 7d
         }
+        # level DEBUG
     }
 }
 
@@ -26,9 +27,9 @@
 # error
 (ERROR_CFG) {
     handle_errors {
-	    rewrite * /root/page/lovechina.html
-	    templates
-	    file_server
+        @4xx expression `{http.error.status_code} >= 400 && {http.error.status_code} < 500`
+        respond @4xx "6Iuf5Yip5Zu95a6255Sf5q275LulIOWyguWboOeluOemj+mBv+i2i+S5iwo="
+        respond "5Lit5Y2O5Lq65rCR5YWx5ZKM5Zu95LiH5bKBCg=="
     }
 }
 
