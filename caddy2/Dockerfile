@@ -20,9 +20,15 @@ RUN xcaddy build \
 
 RUN /go/caddy list-modules
 
+FROM ghcr.io/ysicing/debian as geoip
+
+RUN cd /root/ && wget https://github.com/Hackl0us/GeoIP2-CN/raw/release/Country.mmdb
+
 FROM ghcr.io/ysicing/debian
 
 COPY --from=build /go/caddy /usr/local/bin/caddy
+
+COPY --from=geoip /root/Country.mmdb /root/geoip.mmdb
 
 COPY caddy /etc/caddy
 
