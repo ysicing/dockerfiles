@@ -16,6 +16,14 @@
 :80 {
     metrics /metrics
 
+
+    @geofilter {
+        geocn {
+            db_file "./Country.mmdb"
+        }
+    }
+
+    # file_server @geofilter {}
     root * /root/www
     file_server
 
