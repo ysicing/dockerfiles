@@ -1,3 +1,7 @@
+## 20210903 更新
+
+- 优化caddy2默认Caddyfile
+
 ## 20210831 更新
 
 - 优化caddy2新增geocn插件
