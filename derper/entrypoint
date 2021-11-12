@@ -2,4 +2,4 @@
 
 set -e
 
-derper  --a ${DERP_ADDR:-443} --stun 
+derper  --a ${DERP_ADDR:-":443"} --stun

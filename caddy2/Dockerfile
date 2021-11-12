@@ -13,8 +13,8 @@ RUN xcaddy build \
     --with github.com/mholt/caddy-ratelimit \
     # --with github.com/greenpau/caddy-auth-jwt \
     # --with github.com/greenpau/caddy-auth-portal \
-    --with github.com/greenpau/caddy-trace \
-    --with github.com/hairyhenderson/caddy-teapot-module \
+    # --with github.com/greenpau/caddy-trace \
+    # --with github.com/hairyhenderson/caddy-teapot-module \
     --with github.com/caddyserver/format-encoder \
     --with github.com/mholt/caddy-webdav \
     --with github.com/ysicing/caddy2-geocn
