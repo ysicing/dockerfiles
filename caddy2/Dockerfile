@@ -11,8 +11,8 @@ RUN xcaddy build \
     --with github.com/sjtug/caddy2-filter \
     --with github.com/WingLim/caddy-webhook \
     --with github.com/mholt/caddy-ratelimit \
-    --with github.com/greenpau/caddy-auth-jwt \
-    --with github.com/greenpau/caddy-auth-portal \
+    # --with github.com/greenpau/caddy-auth-jwt \
+    # --with github.com/greenpau/caddy-auth-portal \
     --with github.com/greenpau/caddy-trace \
     --with github.com/hairyhenderson/caddy-teapot-module \
     --with github.com/caddyserver/format-encoder \
