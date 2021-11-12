@@ -1,4 +1,4 @@
-FROM ysicing/goa AS builder
+FROM ysicing/god AS builder
 
 # https://tailscale.com/kb/1118/custom-derp-servers/
 RUN go install tailscale.com/cmd/derper@main
