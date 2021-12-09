@@ -1,6 +1,10 @@
 # ChangeLog
 
-## 29211112 更新
+## 20211210 更新
+
+- 更新tailscale版本到1.18.1
+
+## 20211112 更新
 
 - 新增tailscale/derper
 - 更新tailscale版本到1.16.2
