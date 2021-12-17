@@ -1,4 +1,4 @@
-FROM ghcr.io/ysicing/god AS build
+FROM ysicing/god AS build
 
 RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 

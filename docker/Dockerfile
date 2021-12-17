@@ -1,4 +1,4 @@
-FROM registry.cn-beijing.aliyuncs.com/k7scn/goa
+FROM ysicing/goa
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
 
