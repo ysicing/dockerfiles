@@ -1,5 +1,11 @@
 # ChangeLog
 
+## 20220215 更新
+
+- 更新Debian添加git命令
+- 更新Docker版本到20.10.12,golangci-lint版本到1.44.0
+- 更新tailscale版本到1.20.4
+
 ## 20211217 更新
 
 - 更新tailscale版本到1.18.2
