@@ -10,5 +10,5 @@ RUN chmod +x /usr/local/bin/ergo
 
 RUN set -x \
     && apt-get update \
-    && apt-get install --no-install-recommends --no-install-suggests -y git \
+    && apt-get install --no-install-recommends --no-install-suggests -y apt-transport-https git \
     && rm -rf /var/lib/apt/lists/*
