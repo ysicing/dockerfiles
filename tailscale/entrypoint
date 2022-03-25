@@ -11,12 +11,13 @@ up() {
     --advertise-exit-node=${TAILSCALE_ADVERTISE_EXIT_NODES:-false} \
     --advertise-routes=${TAILSCALE_ADVERTISE_ROUTES} \
     --advertise-tags=${TAILSCALE_ADVERTISE_TAGS} \
-    --authkey=${TAILSCALE_AUTH_KEY} \
+    --auth-key=${TAILSCALE_AUTH_KEY} \
     --exit-node=${TAILSCALE_EXIT_NODE} \
     --exit-node-allow-lan-access=${TAILSCALE_EXIT_NODE_ALLOW_LAN_ACCESS:-false} \
     --force-reauth=${TAILSCALE_FORCE_REAUTH:-false} \
     --host-routes=${TAILSCALE_HOST_ROUTES:-true} \
     --hostname=${TAILSCALE_HOSTNAME:-$(hostname)} \
+    --json=${TAILSCALE_JSON:-false} \
     --login-server=${TAILSCALE_LOGIN_SERVER:-"https://login.tailscale.com"} \
     --netfilter-mode=${TAILSCALE_NETFILTER_MODE:-on} \
     --shields-up=${TAILSCALE_SHIELDS_UP:-false} \

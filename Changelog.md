@@ -1,5 +1,12 @@
 # ChangeLog
 
+## 20220325 更新
+
+- 更新go版本1.18
+- 更新tailscale版本到1.22.1
+- 更新derper版本到1.22.1
+- 更新Docker版本到20.10.14,golangci-lint版本到1.45.2
+
 ## 20220215 更新
 
 - 更新Debian添加git命令
