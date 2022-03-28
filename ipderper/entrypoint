@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+
+bash /app/build_cert.sh $DERP_HOST $DERP_CERTS /app/san.conf
+
+exec /app/derper --hostname=$DERP_HOST \
+    --certmode=manual \
+    --certdir=$DERP_CERTS \
+    --stun=$DERP_STUN  \
+    --verify-clients=$DERP_VERIFY_CLIENTS \
+    -a ":${DERP_ADDRESS:-443}"
