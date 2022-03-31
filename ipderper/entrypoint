@@ -2,11 +2,16 @@
 
 set -e
 
+export DERP_HOST=127.0.0.1
+export DERP_CERTS=/app/certs
+
+export DERP_VERIFY_CLIENTS=false
+
 bash /app/build_cert.sh $DERP_HOST $DERP_CERTS /app/san.conf
 
 exec /app/derper --hostname=$DERP_HOST \
     --certmode=manual \
     --certdir=$DERP_CERTS \
-    --stun=$DERP_STUN  \
-    --verify-clients=$DERP_VERIFY_CLIENTS \
-    -a ":${DERP_ADDRESS:-443}"
+    --stun  \
+    --verify-clients=false \
+    -a ":6230"
