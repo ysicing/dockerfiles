@@ -12,7 +12,7 @@ ENV TZ ${TZ}
 
 RUN  sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update \
-    && apk add --no-cache bash tzdata curl make git \
+    && apk add --no-cache bash tzdata curl make git upx \
     && sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd \
     && ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime \
     && echo ${TZ} > /etc/timezone \

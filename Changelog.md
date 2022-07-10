@@ -1,11 +1,16 @@
 # ChangeLog
 
+## 20220710 更新
+
+- 更新tailscale版本到1.26.2
+- 更新docker版本到20.10.17,golangci-lint版本到1.46.2
+
 ## 20220325 更新
 
 - 更新go版本1.18
 - 更新tailscale版本到1.22.2
 - 更新derper版本到1.22.2
-- 更新Docker版本到20.10.14,golangci-lint版本到1.45.2
+- 更新docker版本到20.10.14,golangci-lint版本到1.45.2
 
 ## 20220215 更新
 
