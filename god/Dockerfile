@@ -1,4 +1,4 @@
-FROM golang:1.18-bullseye
+FROM golang:1.19-bullseye
 
 LABEL maintainer="ysicing <i@ysicing.me>"
 
