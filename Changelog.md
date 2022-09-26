@@ -1,5 +1,10 @@
 # ChangeLog
 
+## 20220926 更新
+
+- 新增kubectl、helm、k8s
+- 更新tailscale版本到1.30.2
+
 ## 20220812 更新
 
 - go版本升级到 1.19

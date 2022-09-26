@@ -1,7 +1,7 @@
 FROM ysicing/alpine
 
 ARG TARGETARCH=amd64
-ARG VERSION=1.30.0
+ARG VERSION=1.30.2
 
 RUN \
   apk add --no-cache iptables iproute2 ca-certificates bash \
