@@ -4,7 +4,7 @@ set -e
 
 mirrors=$1
 
-images=$(ls -al | grep "drwxr"  | grep -v "\." | awk '{print $NF}' | grep -vE "(cachet|caddy)" | tr '\n' ' ')
+images=$(ls -al | grep "drwxr"  | grep -v "\." | awk '{print $NF}' | tr '\n' ' ')
 for image in ${images[@]}
 do
     echo "start build ${image}"
