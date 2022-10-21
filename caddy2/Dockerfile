@@ -2,7 +2,7 @@ FROM ysicing/god AS build
 
 RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 
-RUN xcaddy build \
+RUN xcaddy build v2.6.2 \
     --with github.com/porech/caddy-maxmind-geolocation \
     --with github.com/abiosoft/caddy-exec \
     --with github.com/caddyserver/transform-encoder \
