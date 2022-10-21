@@ -1,6 +1,6 @@
 FROM ysicing/goa
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+RUN sed -i 's/dl-cdn.alpinelinux.org/opentuna.cn/g' /etc/apk/repositories
 
 RUN apk add --no-cache git make wget curl musl-dev ca-certificates libc6-compat openssh-client
 
