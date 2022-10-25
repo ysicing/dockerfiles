@@ -2,7 +2,7 @@ FROM ysicing/god AS build
 
 RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 
-RUN xcaddy build v2.6.2 \
+RUN xcaddy build \
     --with github.com/porech/caddy-maxmind-geolocation \
     --with github.com/abiosoft/caddy-exec \
     --with github.com/caddyserver/transform-encoder \
@@ -27,12 +27,12 @@ FROM ysicing/debian
 
 COPY --from=build /go/caddy /usr/local/bin/caddy
 
-COPY --from=geoip /root/Country.mmdb /root/geoip.mmdb
+COPY --from=geoip /root/Country.mmdb /etc/caddy/geoip.mmdb
 
 COPY caddy /etc/caddy
 
-COPY www /root/www
+COPY www /etc/caddy/www
 
-COPY page /root/page
+COPY page /etc/caddy/page
 
 CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
