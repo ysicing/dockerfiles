@@ -35,4 +35,6 @@ COPY www /etc/caddy/www
 
 COPY page /etc/caddy/page
 
+WORKDIR /etc/caddy
+
 CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]

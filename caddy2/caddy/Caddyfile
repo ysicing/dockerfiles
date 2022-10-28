@@ -5,7 +5,7 @@
             time_format "iso8601"
         }
         output file "{args.0}" {
-            roll_size 50mb
+            roll_size 100mb
             roll_keep 3
             roll_keep_for 7d
         }
@@ -16,7 +16,8 @@
 (TLS) {
     # TLS 配置采用 https://mozilla.github.io/server-side-tls/ssl-config-generator/ 生成，SSL Labs 评分 A+
     protocols tls1.2 tls1.3
-    ciphers TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+    ciphers TLS_CHACHA20_POLY1305_SHA256 TLS_AES_128_GCM_SHA256 TLS_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+    curves x25519 secp521r1 secp384r1 secp256r1
 }
 
 (HSTS) {
@@ -24,40 +25,13 @@
     header / Strict-Transport-Security "max-age=63072000"
 }
 
-# error
-(ERROR_CFG) {
-    handle_errors {
-        @4xx expression `{http.error.status_code} >= 400 && {http.error.status_code} < 500`
-        respond @4xx "6Iuf5Yip5Zu95a6255Sf5q275LulIOWyguWboOeluOemj+mBv+i2i+S5iwo="
-        respond "5Lit5Y2O5Lq65rCR5YWx5ZKM5Zu95LiH5bKBCg=="
+# 全局配置
+{
+    debug
+    servers  {
+        metrics
     }
 }
-
-(COMMON_CONFIG) {
-    # 压缩支持
-    encode zstd gzip
-
-    # TLS 配置
-    # tls {
-    #     import TLS
-    #     import ACME_GANDI
-    # }
-
-    # HSTS
-    # import HSTS
-
-    # error
-    # import ERROR_CFG
-}
-
-# 开启 HTTP3 实验性支持
-# {
-#     servers :443 {
-#         protocol {
-#             experimental_http3
-#         }
-#     }
-# }
 
 # 引入其他具体的站点配置
 import /etc/caddy/*.caddy
