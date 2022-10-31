@@ -9,6 +9,8 @@ ENV HOME="/root" \
     TERM="xterm" \
     TZ=Asia/Shanghai
 
+COPY sources.list /etc/apt/sources.list
+
 RUN set -x \
     && apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y apt-transport-https ca-certificates procps curl wget net-tools iproute2 jq nano pwgen \
@@ -18,5 +20,3 @@ RUN set -x \
         /tmp/* \
         /var/tmp/* \
         /var/lib/apt/lists/*
-
-COPY sources.list /etc/apt/sources.list
