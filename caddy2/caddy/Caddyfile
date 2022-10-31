@@ -29,7 +29,7 @@
 
 # 全局配置
 {
-    debug
+    # debug
     servers  {
         metrics
     }
