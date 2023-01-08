@@ -1,5 +1,10 @@
 # ChangeLog
 
+## 20230108 更新
+
+- 更新tailscale版本到1.34.2
+- 更新helm版本到1.10.3
+
 ## 20220926 更新
 
 - 新增kubectl、helm、k8s
