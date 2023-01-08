@@ -6,6 +6,8 @@ RUN xcaddy build \
     --with github.com/porech/caddy-maxmind-geolocation \
     --with github.com/abiosoft/caddy-exec \
     --with github.com/caddyserver/transform-encoder \
+    --with github.com/caddyserver/forwardproxy@caddy2 \
+    --with github.com/klzgrad/forwardproxy@naive \
     --with github.com/WingLim/caddy-webhook \
     --with github.com/RussellLuo/caddy-ext/ratelimit \
     --with github.com/mholt/caddy-webdav \
