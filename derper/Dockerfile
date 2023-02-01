@@ -6,5 +6,12 @@ FROM ysicing/debian
 
 COPY --from=install /go/bin/derper /usr/local/bin/derper
 
-RUN chmod +x /usr/local/bin/derper
+COPY entrypoint /usr/local/bin/entrypoint
 
+RUN chmod +x /usr/local/bin/derper /usr/local/bin/entrypoint
+
+VOLUME /root/.cache/tailscale
+
+EXPOSE 77 3478
+
+CMD /usr/local/bin/entrypoint
