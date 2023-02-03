@@ -4,7 +4,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/opentuna.cn/g' /etc/apk/repositories
 
 RUN apk add --no-cache git make wget curl musl-dev ca-certificates libc6-compat openssh-client
 
-RUN wget -O docker.tgz https://download.docker.com/linux/static/stable/x86_64/docker-20.10.20.tgz ; \
+RUN wget -O docker.tgz https://download.docker.com/linux/static/stable/x86_64/docker-20.10.23.tgz ; \
     tar --extract \
 		--file docker.tgz \
 		--strip-components 1 \
@@ -16,7 +16,7 @@ RUN wget -O docker.tgz https://download.docker.com/linux/static/stable/x86_64/do
 	docker --version
 
 RUN go install golang.org/x/tools/cmd/goimports@latest; \
-	wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.50.0
+	wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.51.0
 
 COPY modprobe.sh /usr/local/bin/modprobe
 COPY docker-entrypoint.sh /usr/local/bin/

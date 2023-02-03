@@ -1,7 +1,7 @@
 FROM ysicing/debian as gethelm
 
-RUN wget https://get.helm.sh/helm-v3.10.3-linux-amd64.tar.gz && \
-  tar xzvfC helm-v3.10.3-linux-amd64.tar.gz /tmp && \
+RUN wget https://get.helm.sh/helm-v3.11.0-linux-amd64.tar.gz && \
+  tar xzvfC helm-v3.11.0-linux-amd64.tar.gz /tmp && \
   mv /tmp/linux-amd64/helm /usr/local/bin/helm
 
 FROM ysicing/debian
