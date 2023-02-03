@@ -6,18 +6,13 @@ RUN xcaddy build \
     --with github.com/porech/caddy-maxmind-geolocation \
     --with github.com/abiosoft/caddy-exec \
     --with github.com/caddyserver/transform-encoder \
-    --with github.com/caddyserver/forwardproxy@caddy2 \
-    --with github.com/klzgrad/forwardproxy@naive \
     --with github.com/WingLim/caddy-webhook \
     --with github.com/RussellLuo/caddy-ext/ratelimit \
     --with github.com/mholt/caddy-webdav \
     --with github.com/mholt/caddy-dynamicdns \
     --with github.com/ysicing/caddy2-geocn \
     --with github.com/mholt/caddy-l4 \
-    --with github.com/imgk/caddy-trojan \
-    --with github.com/caddy-dns/dnspod \
-    --with github.com/caddy-dns/alidns \
-    --with github.com/mholt/caddy-events-exec
+    --with github.com/imgk/caddy-trojan
 
 RUN /go/caddy list-modules
 
