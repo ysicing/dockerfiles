@@ -1,8 +1,0 @@
-:80 {
-    # log
-    import LOG "/var/log/caddy/admin.log"
-
-    root * /etc/caddy/www
-    file_server
-}
-
