@@ -1,3 +1,11 @@
+FROM ysicing/god as tool
+
+RUN go install github.com/go-task/task/v3/cmd/task@latest
+
+RUN go install github.com/google/gops@latest
+
+RUN go install github.com/mitchellh/gox@latest
+
 FROM golang:1.20-bullseye
 
 LABEL maintainer="ysicing <i@ysicing.me>"
@@ -14,3 +22,5 @@ RUN set -x \
     && apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y git build-essential upx nano \
     && rm -rf /var/lib/apt/lists/*
+
+COPY --from=tool /go/bin/ /usr/bin/

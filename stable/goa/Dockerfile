@@ -1,3 +1,11 @@
+FROM ysicing/goa as tool
+
+RUN go install github.com/go-task/task/v3/cmd/task@latest
+
+RUN go install github.com/google/gops@latest
+
+RUN go install github.com/mitchellh/gox@latest
+
 FROM golang:1.20-alpine
 
 LABEL maintainer="ysicing <i@ysicing.me>"
@@ -19,3 +27,5 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/opentuna.cn/g' /etc/apk/repositories \
     && date \
     && apk del --no-cache tzdata \
     && rm -rf /var/cache/apk/*
+
+COPY --from=tool /go/bin/ /usr/bin/
