@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-set -e
-
-export DERP_HOST=${DERP_HOST:-127.0.0.1}
-export DERP_PORT=${DERP_PORT:-77}
-
-exec /usr/local/bin/derper -hostname ${DERP_HOST} -a ":${DERP_PORT}" -verify-clients

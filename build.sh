@@ -4,8 +4,6 @@ set -e
 
 mirrors=$1
 
-pushd stable
-
 images=$(ls -al | grep "drwxr"  | grep -v "\." | awk '{print $NF}' | tr '\n' ' ')
 for image in ${images[@]}
 do
@@ -22,5 +20,3 @@ do
 done
 
 docker run --rm --name kubectl ghcr.io/ysicing/kubectl:latest
-
-popd

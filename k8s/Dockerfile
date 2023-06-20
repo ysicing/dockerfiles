@@ -1,13 +1,13 @@
 FROM ysicing/debian as getkubectl
 
-RUN wget https://dl.k8s.io/v1.26.1/kubernetes-client-linux-amd64.tar.gz && \
+RUN wget https://dl.k8s.io/v1.27.3/kubernetes-client-linux-amd64.tar.gz && \
   tar xzvfC kubernetes-client-linux-amd64.tar.gz /tmp && \
   mv /tmp/kubernetes/client/bin/kubectl /usr/local/bin/kubectl
 
 FROM ysicing/debian as gethelm
 
-RUN wget https://get.helm.sh/helm-v3.11.0-linux-amd64.tar.gz && \
-  tar xzvfC helm-v3.11.0-linux-amd64.tar.gz /tmp && \
+RUN wget https://get.helm.sh/helm-v3.12.1-linux-amd64.tar.gz && \
+  tar xzvfC helm-v3.12.1-linux-amd64.tar.gz /tmp && \
   mv /tmp/linux-amd64/helm /usr/local/bin/helm
 
 FROM ysicing/debian

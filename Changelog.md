@@ -1,5 +1,11 @@
 # ChangeLog
 
+## 20230620 更新
+
+- 移除tailscale镜像
+- kubectl更新到1.27.3版本
+- 默认源换成mirrors.tencent.com
+
 ## 20230316 更新
 
 - 优化go镜像
@@ -8,7 +14,7 @@
 
 - go更新到1.20版本
 - kubectl更新到1.26.1版本
-- kubectl更新到1.11.0版本
+- helm更新到1.11.0版本
 - tailscale更新到1.36.0版本
 
 ## 20230108 更新

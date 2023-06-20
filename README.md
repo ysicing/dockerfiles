@@ -22,7 +22,6 @@ ysicing/goa
 ghcr.io/ysicing/goa
 ghcr-proxy.hk1.godu.dev/ysicing/goa
 
-
 # go debian
 registry.cn-beijing.aliyuncs.com/k7scn/god:latest
 ysicing/god

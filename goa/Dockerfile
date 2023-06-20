@@ -20,7 +20,7 @@ ARG TZ="Asia/Shanghai"
 
 ENV TZ ${TZ}
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/opentuna.cn/g' /etc/apk/repositories \
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tencent.com/g' /etc/apk/repositories \
     && apk update \
     && apk add --no-cache bash tzdata curl make git upx \
     && sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd \

@@ -1,4 +1,0 @@
-deb http://opentuna.cn/debian/ bullseye main contrib non-free
-deb http://opentuna.cn/debian/ bullseye-updates main contrib non-free
-deb http://opentuna.cn/debian/ bullseye-backports main contrib non-free
-deb http://opentuna.cn/debian-security bullseye-security main contrib non-free
