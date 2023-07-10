@@ -21,6 +21,7 @@ ENV TZ="Asia/Shanghai"
 COPY sources.list /etc/apt/sources.list
 
 RUN set -x \
+    && rm -rf /etc/apt/sources.list.d/debian.sources \
     && apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y git build-essential upx nano \
     && rm -rf /var/lib/apt/lists/*
