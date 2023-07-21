@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim
+FROM debian:bullseye-backports
 
 LABEL maintainer="ysicing <i@ysicing.me>"
 

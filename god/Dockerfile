@@ -8,7 +8,7 @@ RUN go install github.com/mitchellh/gox@latest
 
 RUN go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
-FROM golang:1.20-bookworm
+FROM golang:1-bullseye
 
 LABEL maintainer="ysicing <i@ysicing.me>"
 
