@@ -23,7 +23,8 @@ jobs:
       run: |
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
           set -x
-          ./build.sh
+          ./build.sh god ysicing/god
+          ./build.sh debian ysicing/debian
           docker logout
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}

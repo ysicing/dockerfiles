@@ -4,30 +4,17 @@
 ## 镜像列表
 
 ```
-# alpine
-registry.cn-beijing.aliyuncs.com/k7scn/alpine:latest
-ysicing/alpine
-ghcr.io/ysicing/alpine
-ghcr-proxy.hk1.godu.dev/ysicing/alpine
-
-# debian
-registry.cn-beijing.aliyuncs.com/k7scn/debian:latest
+# debian 12
+registry.cn-beijing.aliyuncs.com/k7scn/debian
+ccr.ccs.tencentyun.com/k7scn/debian
 ysicing/debian
 ghcr.io/ysicing/debian
-ghcr-proxy.hk1.godu.dev/ysicing/debian
 
-# go alpine
-registry.cn-beijing.aliyuncs.com/k7scn/goa:latest
-ysicing/goa
-ghcr.io/ysicing/goa
-ghcr-proxy.hk1.godu.dev/ysicing/goa
-
-# go debian
-registry.cn-beijing.aliyuncs.com/k7scn/god:latest
+# go1 debian 12
+registry.cn-beijing.aliyuncs.com/k7scn/god
+ccr.ccs.tencentyun.com/k7scn/god
 ysicing/god
 ghcr.io/ysicing/god
-ghcr-proxy.hk1.godu.dev/ysicing/god
-
 ```
 
 
