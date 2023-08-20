@@ -1,5 +1,7 @@
 name: Build Docker Image
 on:
+  schedule:
+    - cron: '0 8 */1 * *'
   push:
     branches:
     - master
