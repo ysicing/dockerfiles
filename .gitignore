@@ -1,1 +1,3 @@
 .vscode
+
+!god/bin/upx
