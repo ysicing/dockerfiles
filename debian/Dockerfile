@@ -12,9 +12,9 @@ ENV HOME="/root" \
 COPY sources.list /etc/apt/sources.list
 
 RUN set -x \
-    && rm -rf /etc/apt/sources.list.d/debian.sources \
+    && rm -rf /etc/apt/sources.list.d/debian.sources /etc/apt/sources.list.d/backports.list \
     && apt-get update \
-    && apt-get install --no-install-recommends --no-install-suggests -y apt-transport-https ca-certificates procps curl wget net-tools jq nano pwgen \
+    && apt-get install --no-install-recommends --no-install-suggests -y apt-transport-https ca-certificates procps curl wget net-tools nano \
     && apt-get autoremove \
     && apt-get clean \
     && rm -rf \
