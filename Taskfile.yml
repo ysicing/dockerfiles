@@ -2,11 +2,24 @@
 
 version: '3'
 
-vars:
-  GREETING: Hello, World!
-
 tasks:
+  debian:
+    cmds:
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/debian --push debian
+      - curl -s https://cr.hk1.godu.dev/pull\?image=ysicing/debian
+
+  god:
+    cmds:
+      - mkdir -p god/bin
+      - wget https://github.com/upx/upx/releases/download/v4.1.0/upx-4.1.0-amd64_linux.tar.xz
+      - tar -Jxf upx*.tar.xz
+      - mv upx*/upx god/bin/
+      - defer: rm -rf upx*
+      - defer: rm -rf god/bin
+      - docker buildx build --pull --platform linux/amd64 -t ysicing/god --push god
+      - curl -s https://cr.hk1.godu.dev/pull\?image=ysicing/god
+
   default:
     cmds:
-      - echo "{{.GREETING}}"
-    silent: true
+      - task: debian
+      - task: god

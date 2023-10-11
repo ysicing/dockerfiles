@@ -12,7 +12,7 @@ FROM golang:1-bookworm
 
 LABEL maintainer="ysicing <i@ysicing.me>"
 
-ENV GOPROXY https://goproxy.cn
+ENV GOPROXY https://goproxy.cn,direct
 
 ENV GO111MODULE on
 
