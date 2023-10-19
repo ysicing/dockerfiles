@@ -11,8 +11,8 @@ on:
     branches:
     - master
 jobs:
-  build:
-    name: build docker image
+  god:
+    name: build god image
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -40,9 +40,9 @@ jobs:
       run: |
         echo "install task"
         go install github.com/go-task/task/v3/cmd/task@latest
-    - name: build docker image
+    - name: build god image
       run: |
-          task
+          task god
     - name: Trivy vulnerability scanner god
       uses: aquasecurity/trivy-action@master
       with:
@@ -51,6 +51,38 @@ jobs:
         ignore-unfixed: true
         vuln-type: 'os,library'
         severity: 'CRITICAL,HIGH'
+  debian:
+    name: build debian image
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login GHCR
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCRIO }}
+    - name: Login DockerHub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Setup Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: ${{ env.GO_VERSION }}
+        check-latest: true
+    - name: install task
+      run: |
+        echo "install task"
+        go install github.com/go-task/task/v3/cmd/task@latest
+    - name: build debian image
+      run: |
+          task debian
     - name: Trivy vulnerability scanner debian
       uses: aquasecurity/trivy-action@master
       with:
