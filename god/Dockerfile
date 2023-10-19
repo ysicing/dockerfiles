@@ -28,4 +28,4 @@ RUN set -x \
 
 COPY --from=tool /go/bin/ /usr/bin/
 
-COPY bin/ /usr/bin/
+# COPY bin/ /usr/bin/
