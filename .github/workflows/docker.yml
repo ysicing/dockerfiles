@@ -43,3 +43,19 @@ jobs:
     - name: build docker image
       run: |
           task
+    - name: Trivy vulnerability scanner god
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: 'ghcr.io/ysicing/god'
+        format: 'github'
+        ignore-unfixed: true
+        vuln-type: 'os,library'
+        severity: 'CRITICAL,HIGH'
+    - name: Trivy vulnerability scanner debian
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: 'ghcr.io/ysicing/debian'
+        format: 'github'
+        ignore-unfixed: true
+        vuln-type: 'os,library'
+        severity: 'CRITICAL,HIGH'
