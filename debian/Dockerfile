@@ -1,7 +1,5 @@
 FROM debian:bookworm-backports
 
-LABEL maintainer="ysicing <i@ysicing.me>"
-
 # set environment variables
 ENV HOME="/root" \
     LANGUAGE="en_US.UTF-8" \

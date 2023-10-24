@@ -10,8 +10,6 @@ RUN go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
 FROM golang:1-bookworm
 
-LABEL maintainer="ysicing <i@ysicing.me>"
-
 ENV GOPROXY https://goproxy.cn,direct
 
 ENV GO111MODULE on
