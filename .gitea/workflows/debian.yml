@@ -30,11 +30,3 @@ jobs:
         push: true
         pull: true
         tags: hub.i.ysicing.net/library/debian
-    - name: Trivy vulnerability scanner debian
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: 'hub.i.ysicing.net/library/debian'
-        # format: 'github'
-        ignore-unfixed: true
-        vuln-type: 'os,library'
-        severity: 'CRITICAL,HIGH'
