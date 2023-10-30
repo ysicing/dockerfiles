@@ -1,5 +1,9 @@
 FROM golang:1-bookworm as tool
 
+ENV GOPROXY=https://goproxy.cn,direct
+
+ENV GO111MODULE=on
+
 RUN go install github.com/go-task/task/v3/cmd/task@latest
 
 RUN go install github.com/google/gops@latest
@@ -10,9 +14,9 @@ RUN go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
 FROM golang:1-bookworm
 
-ENV GOPROXY https://goproxy.cn,direct
+ENV GOPROXY=https://goproxy.cn,direct
 
-ENV GO111MODULE on
+ENV GO111MODULE=on
 
 ENV TZ="Asia/Shanghai"
 
