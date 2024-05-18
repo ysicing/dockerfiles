@@ -2,9 +2,7 @@ name: BotAutoMerge
 
 on: pull_request
 
-permissions:
-  pull-requests: write
-  contents: write
+permissions: write-all
 
 jobs:
   automerge:

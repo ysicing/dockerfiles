@@ -28,6 +28,6 @@ RUN set -x \
     && apt-get install --no-install-recommends --no-install-suggests -y git build-essential nano \
     && rm -rf /var/lib/apt/lists/*
 
-COPY --from=tool /go/bin/ /usr/bin/
+# COPY --from=tool /go/bin/ /usr/bin/
 
 # COPY bin/ /usr/bin/

@@ -1,7 +1,6 @@
 name: Build Docker Image
 
 env:
-  GO_VERSION: '1.21'
   TZ: Asia/Shanghai
 
 on:
@@ -11,7 +10,7 @@ on:
     branches:
     - master
 jobs:
-  god:
+  build:
     name: build god image
     runs-on: ubuntu-latest
     steps:
@@ -31,18 +30,26 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Setup Go
-      uses: actions/setup-go@v4
+    - name: Build debian
+      uses: docker/build-push-action@v5
       with:
-        go-version: ${{ env.GO_VERSION }}
-        check-latest: true
-    - name: install task
-      run: |
-        echo "install task"
-        go install github.com/go-task/task/v3/cmd/task@latest
-    - name: build god image
-      run: |
-          task god
+        context: debian
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: |
+          ghcr.io/ysicing/debian
+          ysicing/debian
+          ttl.sh/ysicing/debian
+    - name: Build God
+      uses: docker/build-push-action@v5
+      with:
+        context: god
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: |
+          ghcr.io/ysicing/god
+          ysicing/god
+          ttl.sh/ysicing/debian
     - name: Trivy vulnerability scanner god
       uses: aquasecurity/trivy-action@master
       with:
@@ -51,38 +58,6 @@ jobs:
         ignore-unfixed: true
         vuln-type: 'os,library'
         severity: 'CRITICAL,HIGH'
-  debian:
-    name: build debian image
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v2
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
-    - name: Login GHCR
-      uses: docker/login-action@v2
-      with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GHCRIO }}
-    - name: Login DockerHub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Setup Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: ${{ env.GO_VERSION }}
-        check-latest: true
-    - name: install task
-      run: |
-        echo "install task"
-        go install github.com/go-task/task/v3/cmd/task@latest
-    - name: build debian image
-      run: |
-          task debian
     - name: Trivy vulnerability scanner debian
       uses: aquasecurity/trivy-action@master
       with:
