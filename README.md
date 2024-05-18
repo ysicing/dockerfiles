@@ -38,21 +38,21 @@ ttl.sh/ysicing/debian
 #### god最新可信
 
 ```bash
-ysicing/debian
-ghcr.io/ysicing/debian
+ysicing/god
+ghcr.io/ysicing/god
 ```
 
 #### god可信不最新
 
 ```bash
-registry.cn-beijing.aliyuncs.com/k7scn/debian
-ccr.ccs.tencentyun.com/k7scn/debian
+registry.cn-beijing.aliyuncs.com/k7scn/god
+ccr.ccs.tencentyun.com/k7scn/god
 ```
 
 #### god不一定可信但是最新
 
 ```bash
-ttl.sh/ysicing/debian
+ttl.sh/ysicing/god
 ```
 
 ## License
