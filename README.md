@@ -3,30 +3,56 @@
 
 ## 镜像列表
 
-```
-# debian
-## 最新可信
+### debian
+
+![GitHub Workflow Status (event)](https://img.shields.io/github/actions/workflow/status/ysicing/dockerfiles/debian.yml?style=flat-square)
+![Docker Pulls](https://img.shields.io/docker/pulls/ysicing/debian?style=flat-square)
+![Docker Image Size](https://img.shields.io/docker/image-size/ysicing/debian?style=flat-square)
+
+#### 最新可信
+
+```bash
 ysicing/debian
 ghcr.io/ysicing/debian
+```
 
-## 可信不最新
+#### 可信不最新
+
+```bash
 registry.cn-beijing.aliyuncs.com/k7scn/debian
 ccr.ccs.tencentyun.com/k7scn/debian
+```
 
-## 不一定可信但是最新
+#### 不一定可信但是最新
+
+```bash
 ttl.sh/ysicing/debian
+```
 
-# go debian
-## 最新可信
-ysicing/god
-ghcr.io/ysicing/god
+### god (go base debian)
 
-## 可信不最新
-registry.cn-beijing.aliyuncs.com/k7scn/god
-ccr.ccs.tencentyun.com/k7scn/god
+![GitHub Workflow Status (event)](https://img.shields.io/github/actions/workflow/status/ysicing/dockerfiles/god.yml?style=flat-square)
+![Docker Pulls](https://img.shields.io/docker/pulls/ysicing/god?style=flat-square)
+![Docker Image Size](https://img.shields.io/docker/image-size/ysicing/god?style=flat-square)
 
-## 不一定可信但是最新
-ttl.sh/ysicing/god
+#### god最新可信
+
+```bash
+ysicing/debian
+ghcr.io/ysicing/debian
+```
+
+#### god可信不最新
+
+```bash
+registry.cn-beijing.aliyuncs.com/k7scn/debian
+ccr.ccs.tencentyun.com/k7scn/debian
+```
+
+#### god不一定可信但是最新
+
+```bash
+ttl.sh/ysicing/debian
 ```
 
 ## License
