@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Build Debian
 
 env:
   TZ: Asia/Shanghai
@@ -40,24 +40,6 @@ jobs:
           ghcr.io/ysicing/debian
           ysicing/debian
           ttl.sh/ysicing/debian
-    - name: Build God
-      uses: docker/build-push-action@v5
-      with:
-        context: god
-        platforms: linux/amd64,linux/arm64
-        push: true
-        tags: |
-          ghcr.io/ysicing/god
-          ysicing/god
-          ttl.sh/ysicing/debian
-    - name: Trivy vulnerability scanner god
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: 'ghcr.io/ysicing/god'
-        format: 'github'
-        ignore-unfixed: true
-        vuln-type: 'os,library'
-        severity: 'CRITICAL,HIGH'
     - name: Trivy vulnerability scanner debian
       uses: aquasecurity/trivy-action@master
       with:
