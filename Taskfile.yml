@@ -7,22 +7,27 @@ vars:
 
 tasks:
   debian:
+    desc: build debian image
     cmds:
       - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/debian -t ysicing/debian:{{.BUILD_DATE}} -t ghcr.io/ysicing/debian -t ttl.sh/core/debian --push debian
-      - curl -s https://cr.hk1.godu.dev/pull\?image=ysicing/debian
 
   god:
+    desc: build go debian image
     cmds:
-      # - mkdir -p god/bin
-      # - wget https://github.com/upx/upx/releases/download/v4.1.0/upx-4.1.0-amd64_linux.tar.xz
-      # - tar -Jxf upx*.tar.xz
-      # - mv upx*/upx god/bin/
-      # - defer: rm -rf upx*
-      # - defer: rm -rf god/bin
       - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/god -t ysicing/god:{{.BUILD_DATE}} -t ghcr.io/ysicing/god -t ttl.sh/core/god --push god
-      - curl -s https://cr.hk1.godu.dev/pull\?image=ysicing/god
+
+  registry:
+    desc: build registry image
+    cmds:
+      - docker buildx build --pull --platform linux/amd64 -t ysicing/registry -t ysicing/registry:{{.BUILD_DATE}} -t ttl.sh/core/registry --push registry
+
+  skopeo:
+    desc: build skopeo image
+    cmds:
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/registry -t ysicing/skopeo:{{.BUILD_DATE}} -t ttl.sh/core/skopeo -t ghcr.io/ysicing/skopeo --push skopeo
 
   default:
     cmds:
       - task: debian
       - task: god
+      - task: skopeo
