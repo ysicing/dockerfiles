@@ -26,8 +26,14 @@ tasks:
     cmds:
       - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/registry -t ysicing/skopeo:{{.BUILD_DATE}} -t ttl.sh/core/skopeo -t ghcr.io/ysicing/skopeo --push skopeo
 
+  r3m:
+    desc: build r3m image
+    cmds:
+      - docker buildx build --pull --platform linux/amd64 -t ysicing/r3m -t ysicing/r3m:{{.BUILD_DATE}} -t ttl.sh/core/r3m -t ghcr.io/ysicing/r3m --push r3m
+
   default:
     cmds:
       - task: debian
       - task: god
       - task: skopeo
+      - task: r3m

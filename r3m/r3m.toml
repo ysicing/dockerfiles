@@ -1,0 +1,20 @@
+[log]
+level = "info"
+
+[network]
+no_tcp = false
+use_udp = true
+tcp_timeout = 300
+udp_timeout = 30
+send_proxy = false
+accept_proxy = false
+
+[[endpoints]]
+listen = "0.0.0.0:53"
+remote = "1.1.1.1:53"
+
+[[endpoints]]
+listen = "0.0.0.0:5353"
+remote = "1.1.1.1:53"
+extra_remotes = ["8.8.8.8:53"]
+balance = "roundrobin: 4,6"
