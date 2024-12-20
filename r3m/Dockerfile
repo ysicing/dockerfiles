@@ -1,6 +1,6 @@
 FROM ysicing/debian AS fetch
 
-RUN wget https://github.com/zhboner/realm/releases/download/v2.6.3/realm-x86_64-unknown-linux-gnu.tar.gz && \
+RUN wget https://github.com/zhboner/realm/releases/download/v2.7.0/realm-x86_64-unknown-linux-gnu.tar.gz && \
     tar -zxvf realm-x86_64-unknown-linux-gnu.tar.gz && \
     mv realm /usr/bin/realm && \
     chmod +x /usr/bin/realm && \
