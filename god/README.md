@@ -3,5 +3,5 @@
 > debian gobuild
 
 ```bass
-docker pull ysicing/dgo
+docker pull ysicing/god
 ```

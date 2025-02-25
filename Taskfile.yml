@@ -16,6 +16,11 @@ tasks:
     cmds:
       - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/god -t ysicing/god:{{.BUILD_DATE}} -t ghcr.io/ysicing/god -t ttl.sh/core/god --push god
 
+  gods:
+    desc: build go debian image
+    cmds:
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/gods -t ysicing/gods:{{.BUILD_DATE}} -t ghcr.io/ysicing/gods -t ttl.sh/core/gods --push gods
+
   registry:
     desc: build registry image
     cmds:

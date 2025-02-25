@@ -41,6 +41,17 @@ jobs:
           ghcr.io/ysicing/god
           ysicing/god
           ttl.sh/ysicing/god
+    - name: Build Gods
+      uses: docker/build-push-action@v6
+      with:
+        context: gods
+        platforms: linux/amd64,linux/arm64
+        push: true
+        pull: true
+        tags: |
+          ghcr.io/ysicing/gods
+          ysicing/gods
+          ttl.sh/ysicing/gods
     - name: Trivy vulnerability scanner god
       uses: aquasecurity/trivy-action@master
       with:
