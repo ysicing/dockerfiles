@@ -7,8 +7,6 @@ ENV HOME="/root" \
     TERM="xterm" \
     TZ=Asia/Shanghai
 
-COPY sources.list /etc/apt/sources.list
-
 RUN set -x \
     && rm -rf /etc/apt/sources.list.d/debian.sources /etc/apt/sources.list.d/backports.list \
     && apt-get update \
@@ -19,3 +17,5 @@ RUN set -x \
         /tmp/* \
         /var/tmp/* \
         /var/lib/apt/lists/*
+
+COPY sources.list /etc/apt/sources.list

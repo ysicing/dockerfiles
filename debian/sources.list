@@ -1,4 +1,4 @@
-deb http://mirrors.tencent.com/debian/ bookworm main contrib non-free non-free-firmware
-deb http://mirrors.tencent.com/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb http://mirrors.tencent.com/debian/ bookworm-backports main contrib non-free non-free-firmware
-deb http://mirrors.tencent.com/debian-security bookworm-security main contrib non-free non-free-firmware
+deb https://mirrors.tencent.com/debian/ bookworm main contrib non-free non-free-firmware
+deb https://mirrors.tencent.com/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb https://mirrors.tencent.com/debian/ bookworm-backports main contrib non-free non-free-firmware
+deb https://mirrors.tencent.com/debian-security bookworm-security main contrib non-free non-free-firmware
