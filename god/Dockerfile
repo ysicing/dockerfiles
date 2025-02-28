@@ -19,10 +19,14 @@ ENV GO111MODULE=on
 ENV TZ="Asia/Shanghai"
 
 RUN set -x \
-    && rm -rf /etc/apt/sources.list.d/debian.sources /etc/apt/sources.list.d/backports.list \
     && apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y git build-essential nano \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf \
+        /tmp/* \
+        /var/tmp/* \
+        /var/lib/apt/lists/* \
+        /etc/apt/sources.list.d/debian.sources \
+        /etc/apt/sources.list.d/backports.list
 
 COPY sources.list /etc/apt/sources.list
 

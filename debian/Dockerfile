@@ -8,7 +8,6 @@ ENV HOME="/root" \
     TZ=Asia/Shanghai
 
 RUN set -x \
-    && rm -rf /etc/apt/sources.list.d/debian.sources /etc/apt/sources.list.d/backports.list \
     && apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y apt-transport-https ca-certificates procps curl wget net-tools nano \
     && apt-get autoremove \
@@ -16,6 +15,8 @@ RUN set -x \
     && rm -rf \
         /tmp/* \
         /var/tmp/* \
-        /var/lib/apt/lists/*
+        /var/lib/apt/lists/* \
+        /etc/apt/sources.list.d/debian.sources \
+        /etc/apt/sources.list.d/backports.list
 
 COPY sources.list /etc/apt/sources.list
