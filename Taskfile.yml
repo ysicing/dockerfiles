@@ -5,36 +5,40 @@ version: '3'
 vars:
   BUILD_DATE: $(date +%Y%m%d%H)
 
+includes:
+  all-debian:
+    taskfile: ./debian/Taskfile.yml
+    dir: ./debian
+
 tasks:
   debian:
     desc: build debian image
     cmds:
-      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/debian -t ysicing/debian:{{.BUILD_DATE}} -t ghcr.io/ysicing/debian -t ttl.sh/core/debian --push debian
-
+      - task: all-debian
   god:
     desc: build go debian image
     cmds:
-      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/god -t ysicing/god:{{.BUILD_DATE}} -t ghcr.io/ysicing/god -t ttl.sh/core/god --push god
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/god -t ysicing/god:{{.BUILD_DATE}} -t ghcr.io/ysicing/god -t ttl.sh/ysicing/god --push god
 
   gods:
     desc: build go debian image
     cmds:
-      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/gods -t ysicing/gods:{{.BUILD_DATE}} -t ghcr.io/ysicing/gods -t ttl.sh/core/gods --push gods
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/gods -t ysicing/gods:{{.BUILD_DATE}} -t ghcr.io/ysicing/gods -t ttl.sh/ysicing/gods --push gods
 
   registry:
     desc: build registry image
     cmds:
-      - docker buildx build --pull --platform linux/amd64 -t ysicing/registry -t ysicing/registry:{{.BUILD_DATE}} -t ttl.sh/core/registry --push registry
+      - docker buildx build --pull --platform linux/amd64 -t ysicing/registry -t ysicing/registry:{{.BUILD_DATE}} -t ttl.sh/ysicing/registry --push registry
 
   skopeo:
     desc: build skopeo image
     cmds:
-      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/registry -t ysicing/skopeo:{{.BUILD_DATE}} -t ttl.sh/core/skopeo -t ghcr.io/ysicing/skopeo --push skopeo
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/registry -t ysicing/skopeo:{{.BUILD_DATE}} -t ttl.sh/ysicing/skopeo -t ghcr.io/ysicing/skopeo --push skopeo
 
   r3m:
     desc: build r3m image
     cmds:
-      - docker buildx build --pull --platform linux/amd64 -t ysicing/r3m -t ysicing/r3m:{{.BUILD_DATE}} -t ttl.sh/core/r3m -t ghcr.io/ysicing/r3m --push r3m
+      - docker buildx build --pull --platform linux/amd64 -t ysicing/r3m -t ysicing/r3m:{{.BUILD_DATE}} -t ttl.sh/ysicing/r3m -t ghcr.io/ysicing/r3m --push r3m
 
   default:
     cmds:

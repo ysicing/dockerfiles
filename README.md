@@ -5,6 +5,8 @@
 
 ### debian
 
+> 目前提供两个版本，稳定版本12，测试版本13
+
 ![GitHub Workflow Status (event)](https://img.shields.io/github/actions/workflow/status/ysicing/dockerfiles/debian.yml?style=flat-square)
 ![Docker Pulls](https://img.shields.io/docker/pulls/ysicing/debian?style=flat-square)
 ![Docker Image Size](https://img.shields.io/docker/image-size/ysicing/debian?style=flat-square)

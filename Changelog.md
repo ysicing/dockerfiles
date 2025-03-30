@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 20250330 更新
+
+- 更新debian基础镜像，支持debian13
+
 ## 20230620 更新
 
 - 移除tailscale镜像
