@@ -2,6 +2,7 @@ name: Build Debian
 
 env:
   TZ: Asia/Shanghai
+  GO_VERSION: 1.24
 
 on:
   schedule:
@@ -15,6 +16,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Setup Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: ${{ env.GO_VERSION }}
+        check-latest: true
+    - name: install task
+      run: |
+        echo "install task"
+        go install github.com/go-task/task/v3/cmd/task@latest
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
     - name: Set up Docker Buildx
@@ -30,17 +40,20 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Build debian
-      uses: docker/build-push-action@v6
-      with:
-        context: debian
-        platforms: linux/amd64,linux/arm64
-        push: true
-        pull: true
-        tags: |
-          ghcr.io/ysicing/debian
-          ysicing/debian
-          ttl.sh/ysicing/debian
+    # - name: Build debian
+    #   uses: docker/build-push-action@v6
+    #   with:
+    #     context: debian
+    #     platforms: linux/amd64,linux/arm64
+    #     push: true
+    #     pull: true
+    #     tags: |
+    #       ghcr.io/ysicing/debian
+    #       ysicing/debian
+    #       ttl.sh/ysicing/debian
+    - name: build debian
+      run: |
+        task debian
     - name: Trivy vulnerability scanner debian
       uses: aquasecurity/trivy-action@master
       with:
