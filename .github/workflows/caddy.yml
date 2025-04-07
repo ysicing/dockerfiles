@@ -1,17 +1,17 @@
-name: Build God
+name: Build Caddy
 
 env:
   TZ: Asia/Shanghai
 
 on:
   schedule:
-    - cron: '0 */12 * * *'
+    - cron: '0 8 * * 6'
   push:
     branches:
     - master
 jobs:
   build:
-    name: build god image
+    name: build caddy image
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -30,38 +30,25 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Build God
+    # - name: Build caddy
+    #   uses: docker/build-push-action@v6
+    #   with:
+    #     context: caddy
+    #     platforms: linux/amd64,linux/arm64
+    #     push: true
+    #     pull: true
+    #     tags: |
+    #       ghcr.io/ysicing/caddy
+    #       ysicing/caddy
+    #       ttl.sh/ysicing/caddy
+    - name: build caddy
       run: |
-        task god
-      # uses: docker/build-push-action@v6
-      # with:
-      #   context: god
-      #   platforms: linux/amd64,linux/arm64
-      #   push: true
-      #   pull: true
-      #   tags: |
-      #     ghcr.io/ysicing/god
-      #     ysicing/god
-      #     ttl.sh/ysicing/god
-    - name: Build Gods
-      run: |
-        task gods
-      # uses: docker/build-push-action@v6
-      # with:
-      #   context: gods
-      #   platforms: linux/amd64,linux/arm64
-      #   push: true
-      #   pull: true
-      #   tags: |
-      #     ghcr.io/ysicing/gods
-      #     ysicing/gods
-      #     ttl.sh/ysicing/gods
-    - name: Trivy vulnerability scanner god
+        task caddy
+    - name: Trivy vulnerability scanner caddy
       uses: aquasecurity/trivy-action@master
       with:
-        image-ref: 'ghcr.io/ysicing/god'
+        image-ref: 'ghcr.io/ysicing/caddy'
         format: 'github'
         ignore-unfixed: true
         vuln-type: 'os,library'
         severity: 'CRITICAL,HIGH'
-

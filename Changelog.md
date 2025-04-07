@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 20250407 更新
+
+- 支持caddy镜像
+
 ## 20250330 更新
 
 - 更新debian基础镜像，支持debian13

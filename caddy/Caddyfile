@@ -1,0 +1,33 @@
+(LOG) {
+	log {
+		output file "{args.0}" {
+			roll_size 100mb
+			roll_keep 5
+			roll_keep_for 7d
+			roll_uncompressed
+			roll_local_time
+		}
+		format console {
+			time_format "iso8601"
+		}
+	}
+}
+
+(COMCFG) {
+	encode zstd gzip
+}
+
+{
+	debug
+}
+
+:2025 {
+	import COMCFG
+	import LOG "/var/log/default.log"
+	metrics /metrics
+	@china {
+		geocn
+	}
+  response @china "hello china"
+  response "hello world"
+}

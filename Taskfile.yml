@@ -40,9 +40,15 @@ tasks:
     cmds:
       - docker buildx build --pull --platform linux/amd64 -t ysicing/r3m -t ysicing/r3m:{{.BUILD_DATE}} -t ttl.sh/ysicing/r3m -t ghcr.io/ysicing/r3m --push r3m
 
+  caddy:
+    desc: build caddy image
+    cmds:
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/caddy -t ysicing/caddy:{{.BUILD_DATE}} -t ttl.sh/ysicing/caddy -t ghcr.io/ysicing/caddy --push caddy
+
   default:
     cmds:
       - task: debian
       - task: god
       - task: skopeo
       - task: r3m
+      - task: caddy
