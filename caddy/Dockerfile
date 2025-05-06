@@ -8,8 +8,8 @@ RUN xcaddy build \
     --with github.com/caddy-dns/cloudflare \
     --with github.com/caddy-dns/tencentcloud \
     --with github.com/caddy-dns/alidns \
-    --with github.com/caddy-dns/dnspod \
     --with github.com/ysicing/caddy2-geocn \
+    --with github.com/ysicing/caddy2-gfw \
     --with github.com/mholt/caddy-l4 \
     --with github.com/mholt/caddy-ratelimit
 
