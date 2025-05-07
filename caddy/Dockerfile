@@ -5,12 +5,18 @@ RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 WORKDIR /go/src/
 
 RUN xcaddy build \
+    --with github.com/caddyserver/jsonc-adapter \
     --with github.com/caddy-dns/cloudflare \
     --with github.com/caddy-dns/tencentcloud \
     --with github.com/caddy-dns/alidns \
     --with github.com/ysicing/caddy2-geocn \
     --with github.com/ysicing/caddy2-gfw \
+    --with github.com/mholt/caddy-dynamicdns \
+    --with github.com/mholt/caddy-events-exec \
+    --with github.com/WeidiDeng/caddy-cloudflare-ip \
+    --with github.com/xcaddyplugins/caddy-trusted-cloudfront \
     --with github.com/mholt/caddy-l4 \
+    --with github.com/mholt/caddy-webdav \
     --with github.com/mholt/caddy-ratelimit
 
 RUN /go/src/caddy list-modules

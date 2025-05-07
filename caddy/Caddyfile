@@ -19,6 +19,8 @@
 
 {
 	debug
+	# admin off
+	# email your@email.com
 }
 
 :2025 {
