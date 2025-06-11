@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 20250611 更新
+
+- 移除gods、registry镜像
+
 ## 20250407 更新
 
 - 支持caddy镜像

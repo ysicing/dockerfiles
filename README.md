@@ -37,11 +37,6 @@ ttl.sh/ysicing/debian
 ![Docker Pulls](https://img.shields.io/docker/pulls/ysicing/god?style=flat-square)
 ![Docker Image Size](https://img.shields.io/docker/image-size/ysicing/god?style=flat-square)
 
-#### god vs gods
-
-god: go base debian with tools
-gods: go base debian
-
 #### god最新可信
 
 ```bash
