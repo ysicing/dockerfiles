@@ -9,7 +9,7 @@ ENV HOME="/root" \
 
 RUN set -x \
     && apt-get update \
-    && apt-get install --no-install-recommends --no-install-suggests -y apt-transport-https ca-certificates procps curl wget net-tools nano \
+    && apt-get install --no-install-recommends --no-install-suggests -y apt-transport-https ca-certificates procps curl wget net-tools nano git \
     && apt-get autoremove \
     && apt-get clean \
     && rm -rf \
