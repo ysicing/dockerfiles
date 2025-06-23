@@ -20,6 +20,11 @@ tasks:
     cmds:
       - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/god -t ysicing/god:{{.BUILD_DATE}} -t ghcr.io/ysicing/god -t ttl.sh/ysicing/god --push god
 
+  goa:
+    desc: build go alpine image
+    cmds:
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/goa -t ysicing/goa:{{.BUILD_DATE}} -t ghcr.io/ysicing/goa -t ttl.sh/ysicing/goa --push goa
+
   skopeo:
     desc: build skopeo image
     cmds:

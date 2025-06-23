@@ -2,6 +2,6 @@
 
 > debian gobuild
 
-```bass
+```bash
 docker pull ysicing/god
 ```
