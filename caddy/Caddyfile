@@ -30,6 +30,6 @@
 	@china {
 		geocn
 	}
-  response @china "hello china"
-  response "hello world"
+	response @china "hello china"
+	response "hello world"
 }
