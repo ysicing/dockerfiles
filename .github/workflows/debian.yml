@@ -5,12 +5,13 @@ env:
   GO_VERSION: 1.24
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 12 * * 5'
   push:
     paths:
     - 'debian/**'
-    - '**.yml'
+    - '.github/workflows/debian.yml'
     branches:
     - master
 jobs:

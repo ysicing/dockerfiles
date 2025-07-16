@@ -4,12 +4,13 @@ env:
   TZ: Asia/Shanghai
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '30 12 * * 5'
   push:
     paths:
     - 'god/**'
-    - '**.yml'
+    - '.github/workflows/god.yml'
     branches:
     - master
 jobs:

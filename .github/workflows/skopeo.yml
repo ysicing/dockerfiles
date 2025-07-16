@@ -4,12 +4,13 @@ env:
   TZ: Asia/Shanghai
 
 on:
-  schedule:
-    - cron: '0 8 * * 6'
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '0 8 * * 6'
   push:
     paths:
     - 'skopeo/**'
-    - '**.yml'
+    - '.github/workflows/skopeo.yml'
     branches:
     - master
 jobs:

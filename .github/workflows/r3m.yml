@@ -4,12 +4,13 @@ env:
   TZ: Asia/Shanghai
 
 on:
-  schedule:
-    - cron: '0 8 * * 6'
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '0 8 * * 6'
   push:
     paths:
     - 'r3m/**'
-    - '**.yml'
+    - '.github/workflows/r3m.yml'
     branches:
     - master
 jobs:

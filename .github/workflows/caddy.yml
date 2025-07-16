@@ -4,12 +4,13 @@ env:
   TZ: Asia/Shanghai
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 12 * * 6'
   push:
     paths:
     - 'caddy/**'
-    - '**.yml'
+    - '.github/workflows/caddy.yml'
     branches:
     - master
 jobs:

@@ -4,12 +4,13 @@ env:
   TZ: Asia/Shanghai
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '30 12 * * 5'
   push:
     paths:
     - 'goa/**'
-    - '**.yml'
+    - '.github/workflows/goa.yml'
     branches:
     - master
 jobs:
