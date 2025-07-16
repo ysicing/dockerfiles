@@ -9,7 +9,8 @@ on:
     - cron: '0 12 * * 5'
   push:
     paths:
-    - 'debian/*'
+    - 'debian/**'
+    - '**.yml'
     branches:
     - master
 jobs:

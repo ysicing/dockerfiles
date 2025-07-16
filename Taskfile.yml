@@ -18,27 +18,27 @@ tasks:
   god:
     desc: build go debian image
     cmds:
-      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/god -t ysicing/god:{{.BUILD_DATE}} -t ghcr.io/ysicing/god -t ttl.sh/ysicing/god --push god
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/god -t ysicing/god:{{.BUILD_DATE}} -t ghcr.io/ysicing/god --push god
 
   goa:
     desc: build go alpine image
     cmds:
-      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/goa -t ysicing/goa:{{.BUILD_DATE}} -t ghcr.io/ysicing/goa -t ttl.sh/ysicing/goa --push goa
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/goa -t ysicing/goa:{{.BUILD_DATE}} -t ghcr.io/ysicing/goa --push goa
 
   skopeo:
     desc: build skopeo image
     cmds:
-      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/registry -t ysicing/skopeo:{{.BUILD_DATE}} -t ttl.sh/ysicing/skopeo -t ghcr.io/ysicing/skopeo --push skopeo
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/registry -t ysicing/skopeo:{{.BUILD_DATE}} -t ghcr.io/ysicing/skopeo --push skopeo
 
   r3m:
     desc: build r3m image
     cmds:
-      - docker buildx build --pull --platform linux/amd64 -t ysicing/r3m -t ysicing/r3m:{{.BUILD_DATE}} -t ttl.sh/ysicing/r3m -t ghcr.io/ysicing/r3m --push r3m
+      - docker buildx build --pull --platform linux/amd64 -t ysicing/r3m -t ysicing/r3m:{{.BUILD_DATE}} -t ghcr.io/ysicing/r3m --push r3m
 
   caddy:
     desc: build caddy image
     cmds:
-      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/caddy2 -t ysicing/caddy2:{{.BUILD_DATE}} -t ttl.sh/ysicing/caddy2 -t ghcr.io/ysicing/caddy2 --push caddy
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/caddy2 -t ysicing/caddy2:{{.BUILD_DATE}} -t ghcr.io/ysicing/caddy2 --push caddy
 
   default:
     cmds:

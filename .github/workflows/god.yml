@@ -8,7 +8,8 @@ on:
     - cron: '30 12 * * 5'
   push:
     paths:
-    - 'god/*'
+    - 'god/**'
+    - '**.yml'
     branches:
     - master
 jobs:
