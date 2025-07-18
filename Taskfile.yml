@@ -35,6 +35,11 @@ tasks:
     cmds:
       - docker buildx build --pull --platform linux/amd64 -t ysicing/r3m -t ysicing/r3m:{{.BUILD_DATE}} -t ghcr.io/ysicing/r3m --push r3m
 
+  node_exporter:
+    desc: build node_exporter image
+    cmds:
+      - docker buildx build --pull --platform linux/amd64 -t ysicing/node_exporter -t ysicing/node_exporter:{{.BUILD_DATE}} -t ghcr.io/ysicing/node_exporter --push node_exporter
+
   caddy:
     desc: build caddy image
     cmds:
