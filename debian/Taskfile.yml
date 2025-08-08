@@ -9,15 +9,15 @@ tasks:
   debian12:
     desc: build debian12 image
     cmds:
-      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/debian:12 -t ysicing/debian -t ysicing/debian:12-{{.BUILD_DATE}} -t ghcr.io/ysicing/debian -t ghcr.io/ysicing/debian:12 --push 12
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/debian:12 -t ysicing/debian:12-{{.BUILD_DATE}} --push 12
 
   debian13:
     desc: build debian13 image
     cmds:
-      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/debian:13 -t ysicing/debian:13-{{.BUILD_DATE}} -t ghcr.io/ysicing/debian:13 --push 13
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/debian:13 -t ysicing/debian:13-{{.BUILD_DATE}} -t ysicing/debian -t ghcr.io/ysicing/debian -t ghcr.io/ysicing/debian:13 --push 13
 
   default:
     desc: build all debian images
     cmds:
-      - task: debian12
       - task: debian13
+      - task: debian12

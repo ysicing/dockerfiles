@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 20250809 更新
+
+- 更新debian基础镜像，默认debian13
+
 ## 20250611 更新
 
 - 移除gods、registry镜像
