@@ -1,4 +1,4 @@
-FROM golang:1-bookworm as tool
+FROM golang:1-trixie as tool
 
 ENV GO111MODULE=on
 
@@ -10,7 +10,7 @@ RUN go install github.com/mitchellh/gox@latest
 
 # RUN go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
-FROM golang:1-bookworm
+FROM golang:1-trixie
 
 # ENV GOPROXY=https://goproxy.cn,direct
 

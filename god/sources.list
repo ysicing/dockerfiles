@@ -1,4 +1,4 @@
-deb https://mirrors.tencent.com/debian/ bookworm main contrib non-free non-free-firmware
-deb https://mirrors.tencent.com/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb https://mirrors.tencent.com/debian/ bookworm-backports main contrib non-free non-free-firmware
-deb https://mirrors.tencent.com/debian-security bookworm-security main contrib non-free non-free-firmware
+deb https://mirrors.tencent.com/debian/ trixie main contrib non-free non-free-firmware
+deb https://mirrors.tencent.com/debian/ trixie-updates main contrib non-free non-free-firmware
+deb https://mirrors.tencent.com/debian/ trixie-backports main contrib non-free non-free-firmware
+deb https://mirrors.tencent.com/debian-security trixie-security main contrib non-free non-free-firmware
