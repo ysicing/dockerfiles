@@ -22,8 +22,7 @@ jobs:
     - name: Setup Go
       uses: actions/setup-go@v5
       with:
-        go-version: ${{ env.GO_VERSION }}
-        check-latest: true
+        go-version: 'stable'
     - name: install task
       run: |
         echo "install task"
