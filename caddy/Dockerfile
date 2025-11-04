@@ -9,6 +9,7 @@ RUN xcaddy build \
     --with github.com/caddy-dns/cloudflare \
     --with github.com/caddy-dns/tencentcloud \
     --with github.com/caddy-dns/alidns \
+    --with github.com/ysicing/caddy2-gitspace \
     --with github.com/ysicing/caddy2-geocn \
     --with github.com/mholt/caddy-dynamicdns \
     --with github.com/mholt/caddy-events-exec \
