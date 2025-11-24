@@ -20,6 +20,11 @@ tasks:
     cmds:
       - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/god -t ysicing/god:{{.BUILD_DATE}} -t ghcr.io/ysicing/god --push god
 
+  god-node:
+    desc: build god-node debian image
+    cmds:
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/god-node -t ysicing/god-node:{{.BUILD_DATE}} -t ghcr.io/ysicing/god-node --push god-node
+
   goa:
     desc: build go alpine image
     cmds:
