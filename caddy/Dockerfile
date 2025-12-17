@@ -9,15 +9,14 @@ RUN xcaddy build \
     --with github.com/caddy-dns/cloudflare \
     --with github.com/caddy-dns/tencentcloud \
     --with github.com/caddy-dns/alidns \
-    --with github.com/ysicing/caddy2-gitspace \
-    --with github.com/ysicing/caddy2-geocn \
     --with github.com/mholt/caddy-dynamicdns \
     --with github.com/mholt/caddy-events-exec \
-    --with github.com/WeidiDeng/caddy-cloudflare-ip \
-    --with github.com/xcaddyplugins/caddy-trusted-cloudfront \
     --with github.com/mholt/caddy-l4 \
     --with github.com/mholt/caddy-webdav \
-    --with github.com/mholt/caddy-ratelimit
+    --with github.com/mholt/caddy-ratelimit \
+    --with github.com/WeidiDeng/caddy-cloudflare-ip \
+    --with github.com/xcaddyplugins/caddy-trusted-cloudfront \
+    --with github.com/ysicing/caddy2-geocn
 
 RUN /go/src/caddy list-modules
 
@@ -34,9 +33,9 @@ RUN chmod +x /usr/bin/caddy && \
     /data/caddy \
     /var/log/caddy
 
-ENV XDG_CONFIG_HOME /config
+ENV XDG_CONFIG_HOME=/config
 
-ENV XDG_DATA_HOME /data
+ENV XDG_DATA_HOME=/data
 
 EXPOSE 80
 EXPOSE 443
