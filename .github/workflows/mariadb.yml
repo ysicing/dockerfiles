@@ -1,0 +1,55 @@
+name: Build MariaDB
+
+env:
+  TZ: Asia/Shanghai
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 12 * * 6'
+  push:
+    paths:
+    - 'mariadb/**'
+    - '.github/workflows/mariadb.yml'
+    branches:
+    - master
+jobs:
+  build:
+    name: build mariadb image
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+    - name: Setup Go
+      uses: actions/setup-go@v6
+      with:
+        go-version: 'stable'
+    - name: install task
+      run: |
+        echo "install task"
+        go install github.com/go-task/task/v3/cmd/task@latest
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Login GHCR
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCRIO }}
+    - name: Login DockerHub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: build mariadb
+      run: |
+        task mariadb
+    - name: Trivy vulnerability scanner mariadb
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: 'ghcr.io/ysicing/mariadb'
+        format: 'github'
+        ignore-unfixed: true
+        vuln-type: 'os,library'
+        severity: 'CRITICAL,HIGH'

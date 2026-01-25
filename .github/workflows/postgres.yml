@@ -1,0 +1,55 @@
+name: Build Postgres
+
+env:
+  TZ: Asia/Shanghai
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 12 * * 6'
+  push:
+    paths:
+    - 'postgres/**'
+    - '.github/workflows/postgres.yml'
+    branches:
+    - master
+jobs:
+  build:
+    name: build postgres image
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+    - name: Setup Go
+      uses: actions/setup-go@v6
+      with:
+        go-version: 'stable'
+    - name: install task
+      run: |
+        echo "install task"
+        go install github.com/go-task/task/v3/cmd/task@latest
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Login GHCR
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCRIO }}
+    - name: Login DockerHub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: build postgres
+      run: |
+        task postgres
+    - name: Trivy vulnerability scanner postgres
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: 'ghcr.io/ysicing/postgres'
+        format: 'github'
+        ignore-unfixed: true
+        vuln-type: 'os,library'
+        severity: 'CRITICAL,HIGH'

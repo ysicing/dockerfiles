@@ -50,6 +50,16 @@ tasks:
     cmds:
       - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/caddy2 -t ysicing/caddy2:{{.BUILD_DATE}} -t ghcr.io/ysicing/caddy2 --push caddy
 
+  postgres:
+    desc: build postgres image with timescaledb and pgvector
+    cmds:
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/postgres -t ysicing/postgres:{{.BUILD_DATE}} -t ghcr.io/ysicing/postgres --push postgres
+
+  mariadb:
+    desc: build mariadb image with optimized config
+    cmds:
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/mariadb -t ysicing/mariadb:{{.BUILD_DATE}} -t ghcr.io/ysicing/mariadb --push mariadb
+
   default:
     cmds:
       - task: debian
