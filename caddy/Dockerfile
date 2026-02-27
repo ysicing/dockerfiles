@@ -16,7 +16,8 @@ RUN xcaddy build \
     --with github.com/mholt/caddy-ratelimit \
     --with github.com/WeidiDeng/caddy-cloudflare-ip \
     --with github.com/xcaddyplugins/caddy-trusted-cloudfront \
-    --with github.com/ysicing/caddy2-geocn
+    --with github.com/ysicing/caddy2-geocn \
+    --with github.com/ysicing/caddy2-ipban
 
 RUN /go/src/caddy list-modules
 
