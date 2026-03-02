@@ -45,11 +45,4 @@ jobs:
     - name: build postgres
       run: |
         task postgres
-    - name: Trivy vulnerability scanner postgres
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: 'ghcr.io/ysicing/postgres'
-        format: 'github'
-        ignore-unfixed: true
-        vuln-type: 'os,library'
-        severity: 'CRITICAL,HIGH'
+

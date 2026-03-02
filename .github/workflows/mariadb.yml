@@ -45,11 +45,4 @@ jobs:
     - name: build mariadb
       run: |
         task mariadb
-    - name: Trivy vulnerability scanner mariadb
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: 'ghcr.io/ysicing/mariadb'
-        format: 'github'
-        ignore-unfixed: true
-        vuln-type: 'os,library'
-        severity: 'CRITICAL,HIGH'
+

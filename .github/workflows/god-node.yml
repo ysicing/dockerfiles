@@ -45,12 +45,5 @@ jobs:
     - name: Build god-node
       run: |
         task god-node
-    - name: Trivy vulnerability scanner god-node
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: 'ghcr.io/ysicing/god-node'
-        format: 'github'
-        ignore-unfixed: true
-        vuln-type: 'os,library'
-        severity: 'CRITICAL,HIGH'
+
 

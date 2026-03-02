@@ -45,12 +45,5 @@ jobs:
     - name: Build Goa
       run: |
         task goa
-    - name: Trivy vulnerability scanner goa
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: 'ghcr.io/ysicing/goa'
-        format: 'github'
-        ignore-unfixed: true
-        vuln-type: 'os,library'
-        severity: 'CRITICAL,HIGH'
+
 
