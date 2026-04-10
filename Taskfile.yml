@@ -60,6 +60,11 @@ tasks:
     cmds:
       - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/mariadb -t ysicing/mariadb:{{.BUILD_DATE}} -t ghcr.io/ysicing/mariadb --push mariadb
 
+  aitools:
+    desc: build aitools image with claude-code and codex
+    cmds:
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/aitools -t ysicing/aitools:{{.BUILD_DATE}} -t ghcr.io/ysicing/aitools --push aitools
+
   default:
     cmds:
       - task: debian
