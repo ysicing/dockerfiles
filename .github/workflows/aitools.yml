@@ -32,7 +32,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build aitools
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7
       with:
         context: aitools
         platforms: linux/amd64,linux/arm64
