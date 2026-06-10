@@ -60,6 +60,11 @@ tasks:
     cmds:
       - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/mariadb -t ysicing/mariadb:{{.BUILD_DATE}} -t ghcr.io/ysicing/mariadb --push mariadb
 
+  mysql:
+    desc: build mysql image with replication enabled
+    cmds:
+      - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/mysql -t ysicing/mysql:{{.BUILD_DATE}} -t ghcr.io/ysicing/mysql --push mysql
+
   aitools:
     desc: build aitools image with claude-code and codex
     cmds:

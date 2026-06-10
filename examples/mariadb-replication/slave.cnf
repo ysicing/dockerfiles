@@ -1,0 +1,7 @@
+[mariadb]
+# server-id 必须与主库不同；多个从库之间也要唯一
+server-id = 2
+# 从库只读，防止应用误写导致主从数据不一致。
+# 与 MySQL 不同：MariaDB 初始化不会被 read_only 阻断，因此可直接写配置文件（持久化）。
+# 复制线程拥有特权，read_only 不影响其回放主库数据。
+read_only = ON

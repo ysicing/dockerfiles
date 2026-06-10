@@ -1,0 +1,10 @@
+# 从库专属配置，覆盖镜像默认值
+# 文件名 zz- 前缀确保在 custom.cnf 之后加载，从而覆盖同名项
+
+[mysqld]
+# server-id 必须与主库不同；多个从库之间也要唯一
+server-id = 2
+# 注意：只读（read_only/super_read_only）不能写在这里。
+# MySQL 官方镜像首次初始化会执行设置 root 密码、建库等写操作，
+# 启动即只读会以 ERROR 1290 阻断初始化。
+# 因此改在 setup-replication.sh 中复制配好后用 SET PERSIST 开启只读。

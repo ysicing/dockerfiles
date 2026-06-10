@@ -1,0 +1,43 @@
+services:
+  mysql-master:
+    image: ysicing/mysql
+    container_name: mysql-master
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: appdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - master-data:/var/lib/mysql
+    # 主库直接用镜像默认配置（server-id=1，已开启 binlog/GTID），无需额外覆盖
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootpass"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mysql-slave:
+    image: ysicing/mysql
+    container_name: mysql-slave
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+    ports:
+      - "3307:3306"
+    volumes:
+      - slave-data:/var/lib/mysql
+      # 覆盖 server-id，从库必须与主库不同；只读防止误写
+      - ./slave.cnf:/etc/mysql/conf.d/zz-slave.cnf:ro
+    depends_on:
+      mysql-master:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootpass"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  master-data:
+  slave-data:

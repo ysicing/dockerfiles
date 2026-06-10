@@ -1,0 +1,43 @@
+services:
+  mariadb-master:
+    image: ysicing/mariadb
+    container_name: mariadb-master
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpass
+      MARIADB_DATABASE: appdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - master-data:/var/lib/mysql
+    # 主库直接用镜像默认配置（server-id=1，已开启 binlog/GTID），无需额外覆盖
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mariadb-slave:
+    image: ysicing/mariadb
+    container_name: mariadb-slave
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpass
+    ports:
+      - "3307:3306"
+    volumes:
+      - slave-data:/var/lib/mysql
+      # 覆盖 server-id，从库必须与主库不同
+      - ./slave.cnf:/etc/mysql/conf.d/zz-slave.cnf:ro
+    depends_on:
+      mariadb-master:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  master-data:
+  slave-data:
