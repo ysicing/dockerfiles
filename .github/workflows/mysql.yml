@@ -19,14 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
-    - name: Setup Go
-      uses: actions/setup-go@v6
-      with:
-        go-version: 'stable'
-    - name: install task
-      run: |
-        echo "install task"
-        go install github.com/go-task/task/v3/cmd/task@latest
+    - name: Install Task
+      uses: go-task/setup-task@v2
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v4
     - name: Set up Docker Buildx
