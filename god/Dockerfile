@@ -8,6 +8,8 @@ RUN go install github.com/google/gops@latest
 
 RUN go install github.com/mitchellh/gox@latest
 
+RUN go install github.com/goreleaser/nfpm/v2/cmd/nfpm@latest
+
 # RUN go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
 FROM golang:1-trixie
