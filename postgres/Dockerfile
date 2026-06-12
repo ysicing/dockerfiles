@@ -2,7 +2,7 @@
 # Based on pgvector official image (Debian bookworm)
 
 ARG PG_VERSION=18
-FROM pgvector/pgvector:pg${PG_VERSION}-bookworm
+FROM pgvector/pgvector:pg${PG_VERSION}-trixie
 
 LABEL maintainer="ysicing <ysicing@12306.work>"
 
