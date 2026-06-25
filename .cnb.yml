@@ -1,0 +1,212 @@
+.docker-build: &docker-build
+  runner:
+    cpus: 8
+  docker:
+    image: cnbcool/default-build-env
+  services:
+    - docker
+  env:
+    TZ: Asia/Shanghai
+
+.prepare-docker: &prepare-docker
+  name: prepare docker
+  script: |
+    set -euo pipefail
+    docker run --privileged --rm tonistiigi/binfmt --install all
+    docker buildx create --use --name cnb-builder || docker buildx use cnb-builder
+    docker buildx inspect --bootstrap
+    echo "$CNB_TOKEN" | docker login "$CNB_DOCKER_REGISTRY" -u "$CNB_TOKEN_USER_NAME" --password-stdin
+
+.build-god: &build-god
+  name: build god
+  <<: *docker-build
+  stages:
+    - *prepare-docker
+    - name: build god
+      script: |
+        docker buildx build --pull --platform linux/amd64,linux/arm64 \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/god:latest" \
+          --push god
+
+.build-god-node: &build-god-node
+  name: build god-node
+  <<: *docker-build
+  stages:
+    - *prepare-docker
+    - name: build god-node
+      script: |
+        docker buildx build --pull --platform linux/amd64,linux/arm64 \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/god-node:latest" \
+          --push god-node
+
+.build-goa: &build-goa
+  name: build goa
+  <<: *docker-build
+  stages:
+    - *prepare-docker
+    - name: build goa
+      script: |
+        docker buildx build --pull --platform linux/amd64,linux/arm64 \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/goa:latest" \
+          --push goa
+
+.build-debian: &build-debian
+  name: build debian
+  <<: *docker-build
+  stages:
+    - *prepare-docker
+    - name: build debian 13
+      script: |
+        docker buildx build --pull --platform linux/amd64,linux/arm64 \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/debian:latest" \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/debian:13" \
+          --push debian/13
+    - name: build debian 12
+      script: |
+        docker buildx build --pull --platform linux/amd64,linux/arm64 \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/debian:12" \
+          --push debian/12
+
+.build-caddy: &build-caddy
+  name: build caddy
+  <<: *docker-build
+  stages:
+    - *prepare-docker
+    - name: build caddy
+      script: |
+        docker buildx build --pull --platform linux/amd64,linux/arm64 \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/caddy2:latest" \
+          --push caddy
+
+.build-postgres: &build-postgres
+  name: build postgres
+  <<: *docker-build
+  stages:
+    - *prepare-docker
+    - name: build postgres
+      script: |
+        BUILD_DATE="$(date +%Y%m%d%H)"
+        docker buildx build --pull --platform linux/amd64,linux/arm64 \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/postgres:latest" \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/postgres:$BUILD_DATE" \
+          --push postgres
+
+.build-mariadb: &build-mariadb
+  name: build mariadb
+  <<: *docker-build
+  stages:
+    - *prepare-docker
+    - name: build mariadb
+      script: |
+        BUILD_DATE="$(date +%Y%m%d%H)"
+        docker buildx build --pull --platform linux/amd64,linux/arm64 \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/mariadb:latest" \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/mariadb:$BUILD_DATE" \
+          --push mariadb
+
+.build-mysql: &build-mysql
+  name: build mysql
+  <<: *docker-build
+  stages:
+    - *prepare-docker
+    - name: build mysql
+      script: |
+        BUILD_DATE="$(date +%Y%m%d%H)"
+        docker buildx build --pull --platform linux/amd64,linux/arm64 \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/mysql:latest" \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/mysql:$BUILD_DATE" \
+          --push mysql
+
+.build-aitools: &build-aitools
+  name: build aitools
+  <<: *docker-build
+  stages:
+    - *prepare-docker
+    - name: build aitools
+      script: |
+        docker buildx build --pull --platform linux/amd64,linux/arm64 \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/aitools:latest" \
+          --push aitools
+
+.build-skopeo: &build-skopeo
+  name: build skopeo
+  <<: *docker-build
+  stages:
+    - *prepare-docker
+    - name: build skopeo
+      script: |
+        docker buildx build --pull --platform linux/amd64,linux/arm64 \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/skopeo:latest" \
+          --push skopeo
+
+.build-r3m: &build-r3m
+  name: build r3m
+  <<: *docker-build
+  stages:
+    - *prepare-docker
+    - name: build r3m
+      script: |
+        docker buildx build --pull --platform linux/amd64,linux/arm64 \
+          -t "$CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG/r3m:latest" \
+          --push r3m
+
+master:
+  push:
+    - <<: *build-god
+      ifModify: ["god/**", ".github/workflows/god.yml", ".cnb.yml"]
+    - <<: *build-god-node
+      ifModify: ["god-node/**", ".github/workflows/god-node.yml", ".cnb.yml"]
+    - <<: *build-goa
+      ifModify: ["goa/**", ".github/workflows/goa.yml", ".cnb.yml"]
+    - <<: *build-debian
+      ifModify: ["debian/**", ".github/workflows/debian.yml", ".cnb.yml"]
+    - <<: *build-caddy
+      ifModify: ["caddy/**", ".github/workflows/caddy.yml", ".cnb.yml"]
+    - <<: *build-postgres
+      ifModify: ["postgres/**", ".github/workflows/postgres.yml", ".cnb.yml"]
+    - <<: *build-mariadb
+      ifModify: ["mariadb/**", ".github/workflows/mariadb.yml", ".cnb.yml"]
+    - <<: *build-mysql
+      ifModify: ["mysql/**", ".github/workflows/mysql.yml", ".cnb.yml"]
+    - <<: *build-aitools
+      ifModify: ["aitools/**", ".github/workflows/aitools.yml", ".cnb.yml"]
+    - <<: *build-skopeo
+      ifModify: ["skopeo/**", ".github/workflows/skopeo.yml", ".cnb.yml"]
+    - <<: *build-r3m
+      ifModify: ["r3m/**", ".github/workflows/r3m.yml", ".cnb.yml"]
+
+  "crontab: 30 12 * * *":
+    - *build-god
+    - *build-god-node
+    - *build-goa
+    - *build-debian
+
+  "crontab: 0 12 * * 6":
+    - *build-caddy
+    - *build-postgres
+    - *build-mariadb
+    - *build-mysql
+
+"$":
+  web_trigger_god:
+    - *build-god
+  web_trigger_god_node:
+    - *build-god-node
+  web_trigger_goa:
+    - *build-goa
+  web_trigger_debian:
+    - *build-debian
+  web_trigger_caddy:
+    - *build-caddy
+  web_trigger_postgres:
+    - *build-postgres
+  web_trigger_mariadb:
+    - *build-mariadb
+  web_trigger_mysql:
+    - *build-mysql
+  web_trigger_aitools:
+    - *build-aitools
+  web_trigger_skopeo:
+    - *build-skopeo
+  web_trigger_r3m:
+    - *build-r3m

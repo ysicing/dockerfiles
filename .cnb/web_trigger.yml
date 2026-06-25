@@ -1,0 +1,36 @@
+branch:
+  - reg: ^master$
+    buttons:
+      - name: Build God
+        description: Build and push the god image to CNB
+        event: web_trigger_god
+      - name: Build GodNode
+        description: Build and push the god-node image to CNB
+        event: web_trigger_god_node
+      - name: Build GoA
+        description: Build and push the goa image to CNB
+        event: web_trigger_goa
+      - name: Build Debian
+        description: Build and push the debian image to CNB
+        event: web_trigger_debian
+      - name: Build Caddy
+        description: Build and push the caddy image to CNB
+        event: web_trigger_caddy
+      - name: Build Postgres
+        description: Build and push the postgres image to CNB
+        event: web_trigger_postgres
+      - name: Build MariaDB
+        description: Build and push the mariadb image to CNB
+        event: web_trigger_mariadb
+      - name: Build MySQL
+        description: Build and push the mysql image to CNB
+        event: web_trigger_mysql
+      - name: Build AITools
+        description: Build and push the aitools image to CNB
+        event: web_trigger_aitools
+      - name: Build Skopeo
+        description: Build and push the skopeo image to CNB
+        event: web_trigger_skopeo
+      - name: Build R3M
+        description: Build and push the r3m image to CNB
+        event: web_trigger_r3m
