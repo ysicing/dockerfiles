@@ -5,4 +5,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - \
 
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
+RUN npm install -g bun && bun --version
+
 
