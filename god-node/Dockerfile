@@ -7,4 +7,6 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 RUN npm install -g bun && bun --version
 
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /usr/local/bin/
 
+RUN uv --version && uvx --version
