@@ -12,8 +12,6 @@ RUN go install github.com/daixiang0/gci@latest
 
 RUN go install github.com/goreleaser/nfpm/v2/cmd/nfpm@latest
 
-# RUN go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-
 FROM golang:1-trixie
 
 # ENV GOPROXY=https://goproxy.cn,direct
