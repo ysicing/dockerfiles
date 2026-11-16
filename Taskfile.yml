@@ -51,7 +51,7 @@ tasks:
       - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/caddy2 -t ysicing/caddy2:{{.BUILD_DATE}} -t ghcr.io/ysicing/caddy2 --push caddy
 
   postgres:
-    desc: build postgres image with timescaledb and pgvector
+    desc: build postgres image with pgvector and common extensions
     cmds:
       - docker buildx build --pull --platform linux/amd64,linux/arm64 -t ysicing/postgres -t ysicing/postgres:{{.BUILD_DATE}} -t ghcr.io/ysicing/postgres --push postgres
 

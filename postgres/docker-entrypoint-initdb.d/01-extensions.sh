@@ -4,9 +4,16 @@ set -e
 # 启用常用扩展
 # 注意: auto_explain 不需要 CREATE EXTENSION，通过 shared_preload_libraries 预加载后自动工作
 
+# pg_cron 的元数据统一放在 postgres 库，其他业务库通过 schedule_in_database 调度
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname postgres \
+    -c "CREATE EXTENSION IF NOT EXISTS pg_cron;"
+
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
     -- pgvector (向量相似度搜索，用于 AI/ML)
     CREATE EXTENSION IF NOT EXISTS vector;
+
+    -- 假设索引，用于通过 EXPLAIN 评估索引方案
+    CREATE EXTENSION IF NOT EXISTS hypopg;
 
     -- UUID 生成
     CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
